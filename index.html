@@ -26,11 +26,11 @@
       font-size: 1.5rem;
       font-weight: 400;
       color: #cbd5f5;
-      margin-bottom: 2.5rem;
+      margin-bottom: 2.2rem;
     }
     p {
       font-size: 1.1rem;
-      line-height: 1.6;
+      line-height: 1.7;
       color: #e5e7eb;
       margin: 0 auto;
       max-width: 680px;
@@ -38,7 +38,7 @@
     ul {
       list-style: none;
       padding: 0;
-      margin: 2.5rem 0;
+      margin: 2.3rem 0;
     }
     li {
       font-size: 1.1rem;
@@ -67,6 +67,21 @@
       color: #64748b;
       margin-top: 0.5rem;
     }
+
+    /* Mejora lectura en móvil */
+    @media (max-width: 480px) {
+      .container { padding: 64px 18px; }
+      h1 { font-size: 2.4rem; }
+      h2 { font-size: 1.25rem; margin-bottom: 1.8rem; }
+      p, li { font-size: 1.05rem; }
+      .cta { width: 100%; max-width: 360px; }
+    }
+
+    /* Salto de línea solo en pantallas medianas/grandes */
+    .desktop-br { display: none; }
+    @media (min-width: 640px) {
+      .desktop-br { display: inline; }
+    }
   </style>
 </head>
 <body>
@@ -75,9 +90,8 @@
     <h2>Un pase digital para fans del deporte que viajan</h2>
 
     <p>
-      GlobalFanID es como un carnet de fan del deporte, pero pensado para cuando viajas.
-      Te da acceso a ventajas, experiencias y comunidad en otras ciudades donde el deporte
-      también se vive a lo grande.
+      GlobalFanID es un carnet digital para fans del deporte cuando viajan.<span class="desktop-br"><br/></span><br/>
+      Ya sea para ir a ver partidos, visitar estadios míticos o disfrutar de ventajas y experiencias deportivas en otras ciudades.
     </p>
 
     <ul>
@@ -86,7 +100,10 @@
       <li>⭐ Prioridad como Founding Member</li>
     </ul>
 
-    <a class="cta" href="https://docs.google.com/forms/d/e/1FAIpQLSePnEQ1hdCRYzhTUjWZlcwxSuX9udNkwZwp0iJQdqlxdvr-rw/viewform?usp=dialog" target="_blank" rel="noopener">
+    <a class="cta"
+       href="https://docs.google.com/forms/d/e/1FAIpQLSePnEQ1hdCRYzhTUjWZlcwxSuX9udNkwZwp0iJQdqlxdvr-rw/viewform?usp=dialog"
+       target="_blank"
+       rel="noopener">
       Quiero mi GlobalFanID
     </a>
     <div class="tiny">Gratis · Lista de espera · 1 minuto</div>
