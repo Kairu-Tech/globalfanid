@@ -28,8 +28,6 @@
       color: #cbd5f5;
       margin-bottom: 1.6rem;
     }
-
-    /* NUEVA FRASE PUENTE */
     .bridge {
       font-size: 1.2rem;
       font-weight: 500;
@@ -38,7 +36,6 @@
       max-width: 680px;
       line-height: 1.6;
     }
-
     p {
       font-size: 1.1rem;
       line-height: 1.7;
@@ -55,37 +52,42 @@
       font-size: 1.1rem;
       margin: 12px 0;
     }
-    .cta {
-      display: inline-block;
-      margin: 2.5rem 0 1rem;
-      padding: 16px 32px;
-      background: #38bdf8;
-      color: #020617;
-      font-size: 1.1rem;
-      font-weight: 700;
-      border-radius: 10px;
-      text-decoration: none;
+
+    /* FORM WRAPPER */
+    .form-wrapper {
+      margin: 2.8rem auto 1.2rem;
+      max-width: 520px;
+      background: #020617;
+      border-radius: 12px;
+      padding: 12px;
     }
-    .cta:hover { background: #0ea5e9; }
+
+    iframe {
+      width: 100%;
+      height: 420px;
+      border: none;
+      border-radius: 8px;
+      background: white;
+    }
+
+    .tiny {
+      font-size: 0.85rem;
+      color: #64748b;
+      margin-top: 0.6rem;
+    }
     .note {
       font-size: 0.95rem;
       color: #94a3b8;
       margin-top: 1.8rem;
       line-height: 1.5;
     }
-    .tiny {
-      font-size: 0.85rem;
-      color: #64748b;
-      margin-top: 0.5rem;
-    }
 
     @media (max-width: 480px) {
       .container { padding: 64px 18px; }
       h1 { font-size: 2.4rem; }
-      h2 { font-size: 1.25rem; margin-bottom: 1.4rem; }
-      .bridge { font-size: 1.1rem; margin-bottom: 1.5rem; }
-      p, li { font-size: 1.05rem; }
-      .cta { width: 100%; max-width: 360px; }
+      h2 { font-size: 1.25rem; }
+      .bridge { font-size: 1.1rem; }
+      iframe { height: 480px; }
     }
   </style>
 </head>
@@ -94,7 +96,6 @@
     <h1>GlobalFanID</h1>
     <h2>A digital pass for sports fans who travel</h2>
 
-    <!-- NUEVA FRASE -->
     <div class="bridge">
       Not just matches. Stadiums, local sports & exclusive perks while you travel.
     </div>
@@ -112,13 +113,15 @@
       <li>⭐ Priority access as a Founding Member</li>
     </ul>
 
-    <a class="cta"
-       href="https://docs.google.com/forms/d/e/1FAIpQLScLZMuSUp9EwesN1jURQFeoA39p_92GXxVUbqnTfM4aVbL0_g/viewform?usp=publish-editor"
-       target="_blank"
-       rel="noopener">
-      GET EARLY ACCESS TO GLOBALFANID
-    </a>
-    <div class="tiny">Free · Waitlist · 1 minute</div>
+    <!-- FORM EMBED -->
+    <div class="form-wrapper">
+      <iframe
+        src="https://docs.google.com/forms/d/e/1FAIpQLScLZMuSUp9EwesN1jURQFeoA39p_92GXxVUbqnTfM4aVbL0_g/viewform?embedded=true">
+        Loading…
+      </iframe>
+    </div>
+
+    <div class="tiny">Free · Early access · 1 minute</div>
 
     <div class="note">
       You’re accessing an early version for first fans.<br/>
