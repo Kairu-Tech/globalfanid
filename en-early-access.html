@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>GlobalFanID</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #0f172a;
+      color: #f8fafc;
+      text-align: center;
+    }
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 72px 20px;
+    }
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 0.5rem;
+    }
+    h2 {
+      font-size: 1.5rem;
+      font-weight: 400;
+      color: #cbd5f5;
+      margin-bottom: 1.2rem;
+    }
+    .bridge {
+      font-size: 1.2rem;
+      font-weight: 500;
+      color: #e5e7eb;
+      margin: 0 auto 1.2rem;
+      max-width: 760px;
+      line-height: 1.6;
+    }
+    p {
+      font-size: 1.1rem;
+      line-height: 1.7;
+      color: #e5e7eb;
+      margin: 0 auto;
+      max-width: 760px;
+    }
+    .cta {
+      display: inline-block;
+      margin: 1.8rem 0 0.6rem;
+      padding: 16px 32px;
+      background: #38bdf8;
+      color: #020617;
+      font-size: 1.1rem;
+      font-weight: 800;
+      border-radius: 10px;
+      text-decoration: none;
+    }
+    .cta:hover { background: #0ea5e9; }
+    .tiny {
+      font-size: 0.9rem;
+      color: #94a3b8;
+      margin-top: 0.4rem;
+    }
+
+    /* Sections */
+    .section {
+      margin-top: 56px;
+      text-align: left;
+    }
+    .section-title {
+      text-align: center;
+      font-size: 1.9rem;
+      margin: 0 0 10px;
+    }
+    .section-subtitle {
+      text-align: center;
+      color: #cbd5f5;
+      margin: 0 auto 26px;
+      max-width: 760px;
+      font-size: 1.05rem;
+      line-height: 1.6;
+    }
+
+    /* Cards */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 18px;
+    }
+    .card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(148,163,184,0.18);
+      border-radius: 14px;
+      padding: 18px;
+      text-align: left;
+    }
+    .card h3 {
+      margin: 0 0 8px;
+      font-size: 1.1rem;
+      color: #e2e8f0;
+    }
+    .card p {
+      margin: 0;
+      max-width: none;
+      font-size: 1.0rem;
+      color: #cbd5e1;
+      line-height: 1.6;
+      text-align: left;
+    }
+
+    /* Two columns list */
+    .cols {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+      margin-top: 18px;
+    }
+    .box {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(148,163,184,0.18);
+      border-radius: 14px;
+      padding: 18px;
+    }
+    .box h3 {
+      margin: 0 0 10px;
+      font-size: 1.1rem;
+      color: #e2e8f0;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    li {
+      display: flex;
+      gap: 10px;
+      margin: 10px 0;
+      color: #cbd5e1;
+      line-height: 1.5;
+      font-size: 1.0rem;
+    }
+    .check { color: #38bdf8; font-weight: 900; }
+
+    .divider {
+      height: 1px;
+      background: rgba(148,163,184,0.18);
+      margin: 42px auto 0;
+      max-width: 760px;
+    }
+
+    .note {
+      font-size: 0.95rem;
+      color: #94a3b8;
+      margin-top: 1.2rem;
+      line-height: 1.6;
+      text-align: center;
+    }
+
+    @media (max-width: 720px) {
+      .container { padding: 56px 18px; }
+      h1 { font-size: 2.35rem; }
+      h2 { font-size: 1.25rem; }
+      .bridge { font-size: 1.08rem; }
+      .grid, .cols { grid-template-columns: 1fr; }
+      .cta { width: 100%; max-width: 380px; }
+      .section { text-align: left; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <!-- HERO -->
+    <h1>GlobalFanID</h1>
+    <h2>Experience sports like a local — wherever you travel</h2>
+
+    <div class="bridge">
+      Sports travel isn’t just about attending a match. It’s about the places, the people and the rituals around the game.
+    </div>
+
+    <p>
+      <b>GlobalFanID helps you experience cities through their sports culture</b> — by connecting iconic venues,
+      matchday traditions, local recommendations and fellow fans.
+    </p>
+
+    <a class="cta"
+       href="https://docs.google.com/forms/d/e/1FAIpQLScLZMuSUp9EwesN1jURQFeoA39p_92GXxVUbqnTfM4aVbL0_g/viewform?usp=publish-editor"
+       target="_blank"
+       rel="noopener">
+      JOIN EARLY ACCESS
+    </a>
+    <div class="tiny">Free early access · 1 minute</div>
+
+    <!-- SECTION: LONDON SAMPLE -->
+    <div class="section">
+      <div class="section-title">London sample guide</div>
+      <div class="section-subtitle">
+        A taste of what a GlobalFanID city guide could look like — top picks for travelling fans.
+      </div>
+
+      <div class="grid">
+        <div class="card">
+          <h3>🏟️ Wembley & iconic stadium tours</h3>
+          <p>Behind-the-scenes access at world-famous venues — plus the best local alternatives.</p>
+        </div>
+        <div class="card">
+          <h3>⚽ Any London football ground</h3>
+          <p>From Premier League to local clubs — discover the stadiums that define the city’s football culture.</p>
+        </div>
+        <div class="card">
+          <h3>🎾 Wimbledon & legendary sports venues</h3>
+          <p>Historic venues and museums worth visiting beyond tournament week — tennis, cricket and more.</p>
+        </div>
+        <div class="card">
+          <h3>🍻 Local matchday atmosphere</h3>
+          <p>Where fans gather before games — pubs, chants, rituals and the pre-match energy.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- SECTION: VALUE -->
+    <div class="section">
+      <div class="section-title">What GlobalFanID unlocks</div>
+      <div class="section-subtitle">
+        A curated layer for sports travel — designed for fans who want more than “what to do in a city”.
+      </div>
+
+      <div class="cols">
+        <div class="box">
+          <h3>✅ What you get</h3>
+          <ul>
+            <li><span class="check">✔</span> Stadiums, venues & iconic sports locations — from famous arenas to local grounds</li>
+            <li><span class="check">✔</span> Matchday traditions beyond the stands — routes, rituals, neighbourhoods</li>
+            <li><span class="check">✔</span> Local sports culture you wouldn’t easily find on your own</li>
+            <li><span class="check">✔</span> Experiences connected to real events — even when there’s no match that day</li>
+          </ul>
+        </div>
+
+        <div class="box">
+          <h3>🤝 More than access — belonging</h3>
+          <ul>
+            <li><span class="check">✔</span> Connect with travelling and local fans</li>
+            <li><span class="check">✔</span> Discover where fans gather before matches</li>
+            <li><span class="check">✔</span> Get local tips and recommendations</li>
+            <li><span class="check">✔</span> Feel part of the city, even if it’s your first visit</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="section-title" style="margin-top: 34px;">What it is (and isn’t)</div>
+      <div class="section-subtitle">
+        <b>Not tickets. Not memberships. Not mass tourism.</b><br/>
+        GlobalFanID doesn’t replace existing platforms. It connects them — and adds what’s missing.
+      </div>
+
+      <div class="box" style="max-width: 760px; margin: 0 auto; text-align: left;">
+        <h3>Early access phase</h3>
+        <p style="max-width:none; text-align:left; margin:0;">
+          Join as an early supporter and help shape what GlobalFanID becomes.
+          <br/><br/>
+          <b>Early access is free.</b> Some features may be introduced later, always optional.
+        </p>
+      </div>
+
+      <a class="cta"
+         href="https://docs.google.com/forms/d/e/1FAIpQLScLZMuSUp9EwesN1jURQFeoA39p_92GXxVUbqnTfM4aVbL0_g/viewform?usp=publish-editor"
+         target="_blank"
+         rel="noopener">
+        GET EARLY ACCESS
+      </a>
+      <div class="tiny">No spam · No commitment</div>
+
+      <div class="note">
+        This is an early concept shared for feedback.
+      </div>
+    </div>
+  </div>
+</body>
+</html>
