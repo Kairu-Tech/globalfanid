@@ -4,61 +4,196 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>GlobalFanID</title>
+
+  <!-- Minimal SEO -->
+  <meta name="description" content="Explore every city through its sports culture — like a local fan. Curated venues, rituals, and recommendations for travelling fans." />
+
   <style>
+    :root{
+      --bg:#0f172a;
+      --fg:#f8fafc;
+      --muted:#cbd5f5;
+      --muted2:#94a3b8;
+      --card:rgba(255,255,255,0.04);
+      --border:rgba(148,163,184,0.18);
+      --cta:#38bdf8;
+      --ctaHover:#0ea5e9;
+      --ink:#020617;
+    }
+
+    * { box-sizing: border-box; }
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
       margin: 0;
       padding: 0;
-      background: #0f172a;
-      color: #f8fafc;
+      background: var(--bg);
+      color: var(--fg);
       text-align: center;
     }
+
     .container {
-      max-width: 960px;
+      max-width: 980px;
       margin: 0 auto;
-      padding: 72px 20px;
+      padding: 40px 20px 72px;
     }
+
+    /* Top bar */
+    .topbar{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      margin-bottom: 26px;
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      font-weight: 900;
+      letter-spacing: 0.2px;
+      color: var(--fg);
+      text-decoration:none;
+      font-size: 1.05rem;
+    }
+    .dot{
+      width:10px;height:10px;border-radius:999px;background:var(--cta);
+      box-shadow: 0 0 0 4px rgba(56,189,248,0.15);
+      display:inline-block;
+    }
+    .lang{
+      font-size:0.95rem;
+      color: var(--muted2);
+    }
+    .lang a{
+      color: var(--cta);
+      text-decoration:none;
+      font-weight:800;
+    }
+    .lang span{
+      opacity:0.7;
+      margin: 0 6px;
+    }
+
     h1 {
       font-size: 3rem;
-      margin-bottom: 0.5rem;
+      margin: 0 0 0.5rem;
+      letter-spacing: -0.5px;
     }
     h2 {
-      font-size: 1.5rem;
-      font-weight: 400;
-      color: #cbd5f5;
-      margin-bottom: 1.2rem;
+      font-size: 1.35rem;
+      font-weight: 450;
+      color: var(--muted);
+      margin: 0 auto 1.2rem;
+      max-width: 860px;
+      line-height: 1.5;
     }
     .bridge {
-      font-size: 1.2rem;
-      font-weight: 500;
+      font-size: 1.12rem;
+      font-weight: 550;
       color: #e5e7eb;
-      margin: 0 auto 1.2rem;
+      margin: 0 auto 1.1rem;
       max-width: 760px;
-      line-height: 1.6;
+      line-height: 1.65;
     }
     p {
-      font-size: 1.1rem;
+      font-size: 1.06rem;
       line-height: 1.7;
       color: #e5e7eb;
       margin: 0 auto;
       max-width: 760px;
     }
+
+    .cta-row{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:12px;
+      flex-wrap:wrap;
+      margin-top: 1.6rem;
+    }
     .cta {
       display: inline-block;
-      margin: 1.8rem 0 0.6rem;
-      padding: 16px 32px;
-      background: #38bdf8;
-      color: #020617;
-      font-size: 1.1rem;
-      font-weight: 800;
-      border-radius: 10px;
+      padding: 16px 28px;
+      background: var(--cta);
+      color: var(--ink);
+      font-size: 1.05rem;
+      font-weight: 900;
+      border-radius: 12px;
       text-decoration: none;
+      box-shadow: 0 12px 30px rgba(56,189,248,0.12);
+      border: 1px solid rgba(56,189,248,0.22);
     }
-    .cta:hover { background: #0ea5e9; }
+    .cta:hover { background: var(--ctaHover); }
+    .cta.secondary{
+      background: transparent;
+      color: var(--fg);
+      border: 1px solid var(--border);
+      box-shadow:none;
+    }
+    .cta.secondary:hover{
+      border-color: rgba(56,189,248,0.45);
+      background: rgba(56,189,248,0.08);
+    }
+
     .tiny {
-      font-size: 0.9rem;
-      color: #94a3b8;
-      margin-top: 0.4rem;
+      font-size: 0.92rem;
+      color: var(--muted2);
+      margin-top: 0.55rem;
+    }
+
+    /* HERO IMAGE */
+    .hero {
+      position: relative;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      overflow: hidden;
+      margin: 28px auto 0;
+      background: var(--card);
+      max-width: 980px;
+    }
+    .hero img {
+      width: 100%;
+      height: 330px;
+      object-fit: cover;
+      display: block;
+      filter: saturate(1.05) contrast(1.02);
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(2,6,23,0.20) 0%, rgba(2,6,23,0.90) 72%, rgba(2,6,23,1) 100%);
+    }
+    .hero-content {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 22px;
+      z-index: 1;
+      text-align:left;
+    }
+    .hero-kicker {
+      font-size: 0.95rem;
+      color: #e2e8f0;
+      margin: 0 0 6px;
+      opacity: 0.9;
+      font-weight: 700;
+    }
+    .hero-headline {
+      font-size: 1.55rem;
+      margin: 0 0 8px;
+      color: var(--fg);
+      font-weight: 900;
+      letter-spacing: -0.2px;
+    }
+    .hero-sub {
+      font-size: 1.02rem;
+      color: #e2e8f0;
+      margin: 0;
+      line-height: 1.55;
+      max-width: 720px;
     }
 
     /* Sections */
@@ -68,16 +203,17 @@
     }
     .section-title {
       text-align: center;
-      font-size: 1.9rem;
+      font-size: 1.85rem;
       margin: 0 0 10px;
+      letter-spacing: -0.2px;
     }
     .section-subtitle {
       text-align: center;
-      color: #cbd5f5;
+      color: var(--muted);
       margin: 0 auto 26px;
-      max-width: 760px;
-      font-size: 1.05rem;
-      line-height: 1.6;
+      max-width: 780px;
+      font-size: 1.02rem;
+      line-height: 1.65;
     }
 
     /* Cards */
@@ -88,16 +224,17 @@
       margin-top: 18px;
     }
     .card {
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(148,163,184,0.18);
+      background: var(--card);
+      border: 1px solid var(--border);
       border-radius: 14px;
       padding: 18px;
       text-align: left;
     }
     .card h3 {
       margin: 0 0 8px;
-      font-size: 1.1rem;
+      font-size: 1.06rem;
       color: #e2e8f0;
+      letter-spacing: -0.1px;
     }
     .card p {
       margin: 0;
@@ -108,6 +245,47 @@
       text-align: left;
     }
 
+    /* Photo tiles */
+    .tiles{
+      display:grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 18px;
+    }
+    .tile{
+      border-radius: 14px;
+      overflow:hidden;
+      border: 1px solid var(--border);
+      background: var(--card);
+      position:relative;
+      min-height: 140px;
+    }
+    .tile img{
+      width:100%;
+      height: 160px;
+      object-fit: cover;
+      display:block;
+      filter: saturate(1.05);
+    }
+    .tile .cap{
+      position:absolute;
+      left:10px;
+      bottom:10px;
+      right:10px;
+      font-size:0.92rem;
+      font-weight:800;
+      color: var(--fg);
+      text-shadow: 0 8px 18px rgba(2,6,23,0.75);
+      line-height:1.2;
+    }
+    .tile::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background: linear-gradient(180deg, rgba(2,6,23,0.05) 0%, rgba(2,6,23,0.75) 100%);
+      pointer-events:none;
+    }
+
     /* Two columns list */
     .cols {
       display: grid;
@@ -116,8 +294,8 @@
       margin-top: 18px;
     }
     .box {
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(148,163,184,0.18);
+      background: var(--card);
+      border: 1px solid var(--border);
       border-radius: 14px;
       padding: 18px;
     }
@@ -125,6 +303,7 @@
       margin: 0 0 10px;
       font-size: 1.1rem;
       color: #e2e8f0;
+      letter-spacing: -0.1px;
     }
     ul {
       list-style: none;
@@ -139,81 +318,205 @@
       line-height: 1.5;
       font-size: 1.0rem;
     }
-    .check { color: #38bdf8; font-weight: 900; }
+    .check { color: var(--cta); font-weight: 900; }
 
     .divider {
       height: 1px;
-      background: rgba(148,163,184,0.18);
+      background: var(--border);
       margin: 42px auto 0;
-      max-width: 760px;
+      max-width: 780px;
     }
 
     .note {
       font-size: 0.95rem;
-      color: #94a3b8;
+      color: var(--muted2);
       margin-top: 1.2rem;
       line-height: 1.6;
       text-align: center;
     }
 
+    .faq{
+      max-width: 780px;
+      margin: 0 auto;
+      text-align:left;
+    }
+    .qa{
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 16px 18px;
+      margin: 12px 0;
+    }
+    .qa b{
+      display:block;
+      margin-bottom: 6px;
+      color:#e2e8f0;
+    }
+    .qa p{
+      margin:0;
+      max-width:none;
+      color:#cbd5e1;
+      font-size:1.0rem;
+      text-align:left;
+    }
+
+    footer{
+      margin-top: 26px;
+      color: var(--muted2);
+      font-size: 0.92rem;
+      line-height: 1.6;
+    }
+    footer a{
+      color: var(--cta);
+      text-decoration: none;
+      font-weight: 800;
+    }
+
+    @media (max-width: 900px){
+      .tiles{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
     @media (max-width: 720px) {
-      .container { padding: 56px 18px; }
+      .container { padding: 28px 18px 64px; }
       h1 { font-size: 2.35rem; }
-      h2 { font-size: 1.25rem; }
-      .bridge { font-size: 1.08rem; }
+      h2 { font-size: 1.2rem; }
+      .bridge { font-size: 1.05rem; }
       .grid, .cols { grid-template-columns: 1fr; }
-      .cta { width: 100%; max-width: 380px; }
-      .section { text-align: left; }
+      .tiles{ grid-template-columns: 1fr; }
+      .cta { width: 100%; max-width: 420px; }
+      .hero img { height: 260px; }
+      .hero-headline { font-size: 1.28rem; }
+      .topbar{ margin-bottom: 18px; }
     }
   </style>
 </head>
 
 <body>
   <div class="container">
-    <!-- HERO -->
+
+    <!-- TOP -->
+    <div class="topbar">
+      <a class="brand" href="#">
+        <span class="dot"></span> GlobalFanID
+      </a>
+      <div class="lang">
+        <a href="/en.html">EN</a><span>|</span><a href="/es/">ES</a>
+      </div>
+    </div>
+
+    <!-- HERO TEXT -->
     <h1>GlobalFanID</h1>
-    <h2>Experience sports like a local — wherever you travel</h2>
+    <h2>Explore every city through its sports culture — like a local fan</h2>
 
     <div class="bridge">
-      Sports travel isn’t just about attending a match. It’s about the places, the people and the rituals around the game.
+      Sports travel isn’t just the match. It’s the rituals, the neighbourhoods, the venues — and the people who live it.
     </div>
 
     <p>
-      <b>GlobalFanID helps you experience cities through their sports culture</b> — by connecting iconic venues,
-      matchday traditions, local recommendations and fellow fans.
+      <b>GlobalFanID helps you experience cities through sport</b> — curated venues, matchday traditions,
+      local recommendations and fan-friendly experiences, even when there’s no game on.
     </p>
 
-    <a class="cta"
-       href="https://docs.google.com/forms/d/e/1FAIpQLScLZMuSUp9EwesN1jURQFeoA39p_92GXxVUbqnTfM4aVbL0_g/viewform?usp=publish-editor"
-       target="_blank"
-       rel="noopener">
-      JOIN EARLY ACCESS
-    </a>
-    <div class="tiny">Free early access · 1 minute</div>
+    <div class="cta-row">
+      <a class="cta"
+         href="https://docs.google.com/forms/d/e/1FAIpQLScLZMuSUp9EwesN1jURQFeoA39p_92GXxVUbqnTfM4aVbL0_g/viewform?usp=publish-editor"
+         target="_blank"
+         rel="noopener">
+        GET EARLY ACCESS (60s)
+      </a>
+
+      <a class="cta secondary" href="#preview">
+        See a preview
+      </a>
+    </div>
+    <div class="tiny">Free early access · No spam · First drops: London & Madrid</div>
+
+    <!-- HERO IMAGE (FREE IMAGE via Unsplash Source) -->
+    <div class="hero" id="preview">
+      <img
+        src="https://images.unsplash.com/photo-1521412644187-c49fa049e84d?auto=format&fit=crop&w=1600&q=70"
+        alt="Football stadium atmosphere"
+        loading="lazy"
+      />
+      <div class="hero-content">
+        <div class="hero-kicker">Preview</div>
+        <div class="hero-headline">London — a fan’s way to explore the city</div>
+        <p class="hero-sub">
+          Stadium tours, matchday rituals, where fans meet, classic sports venues — curated for travellers.
+        </p>
+      </div>
+    </div>
+
+    <!-- SECTION: HOW IT WORKS -->
+    <div class="section">
+      <div class="section-title">How it works</div>
+      <div class="section-subtitle">
+        Join early access today. Get the first city guides and perks as we launch with the first partners.
+      </div>
+
+      <div class="grid">
+        <div class="card">
+          <h3>1) Join early access</h3>
+          <p>Tell us your city and the sports you follow. It takes 60 seconds.</p>
+        </div>
+        <div class="card">
+          <h3>2) Get curated city drops</h3>
+          <p>We send you guides and local picks for travelling fans — simple, practical, and fun.</p>
+        </div>
+        <div class="card">
+          <h3>3) Unlock perks as we partner</h3>
+          <p>Early supporters get first access to partner perks and fan-friendly experiences.</p>
+        </div>
+        <div class="card">
+          <h3>Help shape what we build</h3>
+          <p>Your feedback decides what features and cities we launch next.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
 
     <!-- SECTION: LONDON SAMPLE -->
     <div class="section">
-      <div class="section-title">London sample guide</div>
+      <div class="section-title">London (preview)</div>
       <div class="section-subtitle">
         A taste of what a GlobalFanID city guide could look like — top picks for travelling fans.
+      </div>
+
+      <div class="tiles">
+        <div class="tile">
+          <img src="https://images.unsplash.com/photo-1520975958228-61f318fbd2f5?auto=format&fit=crop&w=900&q=70" alt="Stadium tour" loading="lazy">
+          <div class="cap">Stadium tours</div>
+        </div>
+        <div class="tile">
+          <img src="https://images.unsplash.com/photo-1520975959019-29f9a4c77d97?auto=format&fit=crop&w=900&q=70" alt="Pub atmosphere" loading="lazy">
+          <div class="cap">Matchday pubs</div>
+        </div>
+        <div class="tile">
+          <img src="https://images.unsplash.com/photo-1520975853351-8a5a7c5e9b6a?auto=format&fit=crop&w=900&q=70" alt="City transport" loading="lazy">
+          <div class="cap">Fan routes</div>
+        </div>
+        <div class="tile">
+          <img src="https://images.unsplash.com/photo-1517649763962-0c623066013b?auto=format&fit=crop&w=900&q=70" alt="Tennis court" loading="lazy">
+          <div class="cap">Iconic venues</div>
+        </div>
       </div>
 
       <div class="grid">
         <div class="card">
           <h3>🏟️ Wembley & iconic stadium tours</h3>
-          <p>Behind-the-scenes access at world-famous venues — plus the best local alternatives.</p>
+          <p>Behind-the-scenes at world-famous venues — plus the best local alternatives.</p>
         </div>
         <div class="card">
-          <h3>⚽ Any London football ground</h3>
-          <p>From Premier League to local clubs — discover the stadiums that define the city’s football culture.</p>
+          <h3>⚽ London football culture</h3>
+          <p>From Premier League to local clubs — discover the grounds that define the city.</p>
         </div>
         <div class="card">
-          <h3>🎾 Wimbledon & legendary sports venues</h3>
-          <p>Historic venues and museums worth visiting beyond tournament week — tennis, cricket and more.</p>
+          <h3>🎾 Wimbledon & legendary sports sites</h3>
+          <p>Historic venues and museums worth visiting beyond tournament week.</p>
         </div>
         <div class="card">
           <h3>🍻 Local matchday atmosphere</h3>
-          <p>Where fans gather before games — pubs, chants, rituals and the pre-match energy.</p>
+          <p>Where fans gather — pubs, chants, rituals and the pre-match energy.</p>
         </div>
       </div>
     </div>
@@ -231,7 +534,7 @@
         <div class="box">
           <h3>✅ What you get</h3>
           <ul>
-            <li><span class="check">✔</span> Stadiums, venues & iconic sports locations — from famous arenas to local grounds</li>
+            <li><span class="check">✔</span> Stadiums, venues & iconic sports locations — famous arenas and local grounds</li>
             <li><span class="check">✔</span> Matchday traditions beyond the stands — routes, rituals, neighbourhoods</li>
             <li><span class="check">✔</span> Local sports culture you wouldn’t easily find on your own</li>
             <li><span class="check">✔</span> Experiences connected to real events — even when there’s no match that day</li>
@@ -242,42 +545,119 @@
           <h3>🤝 More than access — belonging</h3>
           <ul>
             <li><span class="check">✔</span> Connect with travelling and local fans</li>
-            <li><span class="check">✔</span> Discover where fans gather before matches</li>
+            <li><span class="check">✔</span> Discover where fans meet before matches</li>
             <li><span class="check">✔</span> Get local tips and recommendations</li>
-            <li><span class="check">✔</span> Feel part of the city, even if it’s your first visit</li>
+            <li><span class="check">✔</span> Feel part of the city, even on your first visit</li>
           </ul>
         </div>
       </div>
 
       <div class="divider"></div>
 
+      <!-- SECTION: FOR WHO -->
+      <div class="section-title" style="margin-top: 34px;">Who it’s for</div>
+      <div class="section-subtitle">
+        Built for fans who travel (or live) with sport in their plans.
+      </div>
+
+      <div class="grid">
+        <div class="card">
+          <h3>✈️ Travelling fans</h3>
+          <p>You want the city’s sports “must-dos” — without wasting hours researching.</p>
+        </div>
+        <div class="card">
+          <h3>🏙️ Curious locals</h3>
+          <p>You want to explore venues, traditions and sports culture in your own city.</p>
+        </div>
+        <div class="card">
+          <h3>👨‍👩‍👧‍👦 Families & groups</h3>
+          <p>You want easy plans: tours, museums, venues and safe spots for matchday atmosphere.</p>
+        </div>
+        <div class="card">
+          <h3>🎟️ Not just match days</h3>
+          <p>You want experiences even when there’s no game — museums, routes, rituals, and places.</p>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <!-- WHAT IT IS / ISN'T -->
       <div class="section-title" style="margin-top: 34px;">What it is (and isn’t)</div>
       <div class="section-subtitle">
         <b>Not tickets. Not memberships. Not mass tourism.</b><br/>
         GlobalFanID doesn’t replace existing platforms. It connects them — and adds what’s missing.
       </div>
 
-      <div class="box" style="max-width: 760px; margin: 0 auto; text-align: left;">
+      <div class="box" style="max-width: 780px; margin: 0 auto; text-align: left;">
         <h3>Early access phase</h3>
         <p style="max-width:none; text-align:left; margin:0;">
           Join as an early supporter and help shape what GlobalFanID becomes.
           <br/><br/>
-          <b>Early access is free.</b> Some features may be introduced later, always optional.
+          <b>Early access is free.</b> Some features may arrive later — always optional.
         </p>
       </div>
 
-      <a class="cta"
-         href="https://docs.google.com/forms/d/e/1FAIpQLScLZMuSUp9EwesN1jURQFeoA39p_92GXxVUbqnTfM4aVbL0_g/viewform?usp=publish-editor"
-         target="_blank"
-         rel="noopener">
-        GET EARLY ACCESS
-      </a>
-      <div class="tiny">No spam · No commitment</div>
+      <div class="cta-row" style="margin-top:22px;">
+        <a class="cta"
+           href="https://docs.google.com/forms/d/e/1FAIpQLScLZMuSUp9EwesN1jURQFeoA39p_92GXxVUbqnTfM4aVbL0_g/viewform?usp=publish-editor"
+           target="_blank"
+           rel="noopener">
+          JOIN EARLY ACCESS
+        </a>
+        <a class="cta secondary" href="#faq">FAQ</a>
+      </div>
+
+      <div class="tiny">Free · 60 seconds · No commitment</div>
 
       <div class="note">
-        This is an early concept shared for feedback.
+        Early concept shared for feedback — built with the first fans.
       </div>
     </div>
+
+    <div class="divider"></div>
+
+    <!-- FAQ -->
+    <div class="section" id="faq">
+      <div class="section-title">FAQ</div>
+      <div class="section-subtitle">
+        Quick answers — so you know exactly what you’re joining.
+      </div>
+
+      <div class="faq">
+        <div class="qa">
+          <b>Is this free?</b>
+          <p>Yes. Early access is free. If we introduce paid features later, they’ll be optional.</p>
+        </div>
+        <div class="qa">
+          <b>Is this about tickets?</b>
+          <p>No — not a ticketing platform. It’s about fan-friendly city experiences around sport.</p>
+        </div>
+        <div class="qa">
+          <b>When do I get something after signing up?</b>
+          <p>We’ll email the first city drops as we launch. Early supporters get the first access.</p>
+        </div>
+        <div class="qa">
+          <b>Will you spam me?</b>
+          <p>No. We’ll only contact you about early access and the first launches.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- Footer -->
+    <footer>
+      Contact: <a href="mailto:hello@globalfanid.com">hello@globalfanid.com</a>
+      &nbsp;·&nbsp; <a href="/privacy.html">Privacy</a>
+      <br/>
+      Images: Unsplash (free to use). If you prefer, we can replace these with your own photos later.
+      <br/>
+      © <span id="y"></span> GlobalFanID
+    </footer>
   </div>
+
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
