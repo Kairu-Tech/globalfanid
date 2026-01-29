@@ -131,9 +131,10 @@
       font-size: 0.92rem;
       color: var(--muted2);
       margin-top: 0.55rem;
+      text-align: center; /* ensures centering even if inside left-aligned blocks */
     }
 
-    /* HERO IMAGE */
+    /* HERO IMAGE (generic) */
     .hero {
       position: relative;
       border: 1px solid var(--border);
@@ -146,7 +147,7 @@
     }
     .hero img {
       width: 100%;
-      height: 330px;
+      height: 340px;
       object-fit: cover;
       display: block;
       filter: saturate(1.05) contrast(1.02);
@@ -155,7 +156,7 @@
       content: "";
       position: absolute;
       inset: 0;
-      background: linear-gradient(180deg, rgba(2,6,23,0.18) 0%, rgba(2,6,23,0.90) 72%, rgba(2,6,23,1) 100%);
+      background: linear-gradient(180deg, rgba(2,6,23,0.18) 0%, rgba(2,6,23,0.88) 68%, rgba(2,6,23,1) 100%);
     }
     .hero-content {
       position: absolute;
@@ -185,7 +186,7 @@
       color: #e2e8f0;
       margin: 0;
       line-height: 1.55;
-      max-width: 720px;
+      max-width: 740px;
     }
 
     /* Sections */
@@ -343,7 +344,7 @@
       .grid, .cols { grid-template-columns: 1fr; }
       .tiles{ grid-template-columns: 1fr; }
       .cta { width: 100%; max-width: 420px; }
-      .hero img { height: 260px; }
+      .hero img { height: 270px; }
       .hero-headline { font-size: 1.28rem; }
       .topbar{ margin-bottom: 18px; }
     }
@@ -379,24 +380,25 @@
          rel="noopener">
         GET EARLY ACCESS (60s)
       </a>
-      <a class="cta secondary" href="#preview">See a preview</a>
+      <a class="cta secondary" href="#how">How it works</a>
     </div>
     <div class="tiny">Free early access · No spam · First drops: London & Madrid</div>
 
-    <!-- HERO (LOCAL IMAGE) -->
-    <div class="hero" id="preview">
-      <img src="/assets/hero.jpg" alt="Stadium atmosphere" loading="lazy" />
+    <!-- HERO (GENERIC / NO LONDON HERE) -->
+    <div class="hero" id="top">
+      <img src="/assets/hero.jpg" alt="Matchday stadium atmosphere" loading="lazy" />
       <div class="hero-content">
-        <div class="hero-kicker">Preview</div>
-        <div class="hero-headline">London — a fan’s way to explore the city</div>
+        <div class="hero-kicker">Early access</div>
+        <div class="hero-headline">Experience sports like a local — wherever you travel</div>
         <p class="hero-sub">
-          Stadium tours, matchday rituals, where fans meet, classic sports venues — curated for travellers.
+          Explore cities through their sports culture: venues, traditions, local picks and fan-friendly experiences —
+          even when there’s no game on.
         </p>
       </div>
     </div>
 
     <!-- HOW IT WORKS -->
-    <div class="section">
+    <div class="section" id="how">
       <div class="section-title">How it works</div>
       <div class="section-subtitle">
         Join early access today. Get the first city guides and perks as we launch with the first partners.
@@ -424,8 +426,8 @@
 
     <div class="divider"></div>
 
-    <!-- LONDON PREVIEW -->
-    <div class="section">
+    <!-- LONDON PREVIEW (ONLY ONCE) -->
+    <div class="section" id="preview">
       <div class="section-title">London (preview)</div>
       <div class="section-subtitle">
         A taste of what a GlobalFanID city guide could look like — top picks for travelling fans.
@@ -457,7 +459,7 @@
         </div>
         <div class="card">
           <h3>🏛️ Other iconic sports venues</h3>
-          <p>Cricket grounds, rugby stadiums... Discover London´s wider sports culture.</p>
+          <p>Cricket grounds, rugby stadiums and historic arenas — discover London’s wider sports culture.</p>
         </div>
         <div class="card">
           <h3>🎾 Wimbledon & legendary sports sites</h3>
@@ -526,6 +528,7 @@
           JOIN EARLY ACCESS
         </a>
       </div>
+      <!-- Centered microcopy under final CTA -->
       <div class="tiny">Free · 60 seconds · No commitment</div>
     </div>
 
@@ -559,7 +562,7 @@
     <div class="divider"></div>
 
     <footer>
-      Contact: <a href="mailto:hello@globalfanid.com">hello@globalfanid.com</a>
+      Contact: <a href="mailto:alex@kairu.tech">alex@kairu.tech</a>
       &nbsp;·&nbsp; <a href="/privacy.html">Privacy</a><br/>
       © <span id="y"></span> GlobalFanID
     </footer>
