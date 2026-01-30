@@ -17,6 +17,7 @@
       --cta:#38bdf8;
       --ctaHover:#0ea5e9;
       --ink:#020617;
+      --focus: rgba(56,189,248,0.35);
     }
     * { box-sizing: border-box; }
     body {
@@ -119,11 +120,37 @@
       border-color: rgba(56,189,248,0.45);
       background: rgba(56,189,248,0.08);
     }
+
+    /* Small helper line */
     .tiny {
       font-size: 0.92rem;
       color: var(--muted2);
       margin-top: 0.55rem;
       text-align: center;
+    }
+
+    /* NEW: quick links row under top buttons */
+    .quicklinks{
+      margin-top: 10px;
+      font-size: 0.95rem;
+      color: var(--muted2);
+      display:flex;
+      gap:10px;
+      justify-content:center;
+      align-items:center;
+      flex-wrap:wrap;
+    }
+    .quicklinks a{
+      color: var(--cta);
+      text-decoration: none;
+      font-weight: 900;
+    }
+    .quicklinks .sep{ opacity: 0.55; }
+
+    a:focus-visible, button:focus-visible{
+      outline: 3px solid var(--focus);
+      outline-offset: 2px;
+      border-radius: 12px;
     }
 
     /* HERO IMAGE (single hero) */
@@ -354,21 +381,28 @@
       </div>
     </div>
 
-    <!-- HERO TEXT (short + not repeating the hero block) -->
+    <!-- HERO TEXT -->
     <h1>GlobalFanID</h1>
     <h2>Explore every city through its sports culture — like a local fan</h2>
     <p style="max-width:820px;">
       Curated venues, matchday rituals and local recommendations for travelling fans — even when there’s no game on.
     </p>
 
-    <!-- TOP BUTTONS (ORDER CHANGED: explain first, then preview) -->
+    <!-- TOP BUTTONS -->
     <div class="cta-row">
       <a class="cta secondary" href="#how">How it works</a>
       <a class="cta secondary" href="#preview">See a London preview</a>
     </div>
+
+    <!-- NEW: FAQ link under buttons (discreet) -->
+    <div class="quicklinks" aria-label="Quick links">
+      <span>Questions?</span>
+      <a href="#faq">Read the FAQ</a>
+    </div>
+
     <div class="tiny">First drops: London & Madrid · Free early access (later on this page)</div>
 
-    <!-- SINGLE HERO BLOCK (generic visual) -->
+    <!-- SINGLE HERO BLOCK -->
     <div class="hero" id="hero">
       <img src="/assets/hero.jpg" alt="Matchday stadium atmosphere" loading="lazy" />
       <div class="hero-content">
@@ -412,7 +446,7 @@
 
     <div class="divider"></div>
 
-    <!-- LONDON PREVIEW (proof) -->
+    <!-- LONDON PREVIEW -->
     <div class="section" id="preview">
       <div class="section-title">London (preview)</div>
       <div class="section-subtitle">
