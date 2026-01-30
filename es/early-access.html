@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>GlobalFanID</title>
+  <title>GlobalFanID · Early Access</title>
   <meta name="description" content="Explora cada ciudad a través de su cultura deportiva — como un fan local. Guías, rituales y recomendaciones para viajeros." />
 
   <style>
@@ -57,16 +57,34 @@
       box-shadow: 0 0 0 4px rgba(56,189,248,0.15);
       display:inline-block;
     }
+
+    /* Language switcher */
     .lang{
       font-size:0.95rem;
       color: var(--muted2);
+      display:flex;
+      align-items:center;
+      gap:8px;
     }
     .lang a{
       color: var(--cta);
       text-decoration:none;
       font-weight:900;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid transparent;
     }
-    .lang span{ opacity:0.7; margin: 0 6px; }
+    .lang a:hover{
+      border-color: rgba(56,189,248,0.35);
+      background: rgba(56,189,248,0.08);
+    }
+    .lang .active{
+      color: var(--fg);
+      border-color: rgba(148,163,184,0.35);
+      background: rgba(255,255,255,0.06);
+      cursor: default;
+      pointer-events: none;
+    }
 
     h1 {
       font-size: 3rem;
@@ -121,7 +139,6 @@
       background: rgba(56,189,248,0.08);
     }
 
-    /* Small helper line */
     .tiny {
       font-size: 0.92rem;
       color: var(--muted2);
@@ -129,7 +146,6 @@
       text-align: center;
     }
 
-    /* quick links row under top buttons */
     .quicklinks{
       margin-top: 10px;
       font-size: 0.95rem;
@@ -145,7 +161,6 @@
       text-decoration: none;
       font-weight: 900;
     }
-    .quicklinks .sep{ opacity: 0.55; }
 
     a:focus-visible, button:focus-visible{
       outline: 3px solid var(--focus);
@@ -153,7 +168,7 @@
       border-radius: 12px;
     }
 
-    /* HERO IMAGE (single hero) */
+    /* HERO IMAGE */
     .hero {
       position: relative;
       border: 1px solid var(--border);
@@ -375,9 +390,15 @@
   <div class="container">
 
     <div class="topbar">
-      <a class="brand" href="#"><span class="dot"></span> GlobalFanID</a>
-      <div class="lang">
-        <a href="/en.html">EN</a><span>|</span><a href="/es/">ES</a>
+      <a class="brand" href="/"><span class="dot"></span> GlobalFanID</a>
+
+      <!-- ✅ Language links updated:
+           EN -> English early access page
+           ES -> Spanish early access page (this page)
+           Adjust paths below if your file names differ. -->
+      <div class="lang" aria-label="Idioma">
+        <a href="/en-early-access.html">EN</a>
+        <a class="active" href="/es/index.html" aria-current="page">ES</a>
       </div>
     </div>
 
@@ -394,7 +415,6 @@
       <a class="cta secondary" href="#preview">Ver preview de Londres</a>
     </div>
 
-    <!-- FAQ link under buttons (discreet) -->
     <div class="quicklinks" aria-label="Enlaces rápidos">
       <span>¿Dudas?</span>
       <a href="#faq">Lee la FAQ</a>
@@ -402,7 +422,7 @@
 
     <div class="tiny">Primeros lanzamientos: Londres & Madrid · Early access gratis (más abajo en esta página)</div>
 
-    <!-- SINGLE HERO BLOCK -->
+    <!-- HERO IMAGE BLOCK -->
     <div class="hero" id="hero">
       <img src="/assets/hero.jpg" alt="Ambiente de estadio en día de partido" loading="lazy" />
       <div class="hero-content">
@@ -595,4 +615,3 @@
   </script>
 </body>
 </html>
-
