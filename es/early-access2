@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>GlobalFanID · Early Access</title>
+  <meta name="description" content="Explora cada ciudad a través de su cultura deportiva — como un fan local. Guías, rituales y recomendaciones para viajeros." />
+
+  <style>
+    :root{
+      --bg:#0f172a;
+      --fg:#f8fafc;
+      --muted:#cbd5f5;
+      --muted2:#94a3b8;
+      --card:rgba(255,255,255,0.04);
+      --border:rgba(148,163,184,0.18);
+      --cta:#38bdf8;
+      --ctaHover:#0ea5e9;
+      --ink:#020617;
+      --focus: rgba(56,189,248,0.35);
+    }
+    * { box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: var(--bg);
+      color: var(--fg);
+      text-align: center;
+    }
+    .container {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 40px 20px 72px;
+    }
+
+    /* Top bar */
+    .topbar{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      margin-bottom: 22px;
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      font-weight: 900;
+      letter-spacing: 0.2px;
+      color: var(--fg);
+      text-decoration:none;
+      font-size: 1.05rem;
+    }
+    .dot{
+      width:10px;height:10px;border-radius:999px;background:var(--cta);
+      box-shadow: 0 0 0 4px rgba(56,189,248,0.15);
+      display:inline-block;
+    }
+
+    /* Language switcher */
+    .lang{
+      font-size:0.95rem;
+      color: var(--muted2);
+      display:flex;
+      align-items:center;
+      gap:8px;
+    }
+    .lang a{
+      color: var(--cta);
+      text-decoration:none;
+      font-weight:900;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+    }
+    .lang a:hover{
+      border-color: rgba(56,189,248,0.35);
+      background: rgba(56,189,248,0.08);
+    }
+    .lang .active{
+      color: var(--fg);
+      border-color: rgba(148,163,184,0.35);
+      background: rgba(255,255,255,0.06);
+      cursor: default;
+      pointer-events: none;
+    }
+
+    h1 {
+      font-size: 3rem;
+      margin: 0 0 0.55rem;
+      letter-spacing: -0.5px;
+    }
+    h2 {
+      font-size: 1.35rem;
+      font-weight: 450;
+      color: var(--muted);
+      margin: 0 auto 0.95rem;
+      max-width: 860px;
+      line-height: 1.5;
+    }
+    p {
+      font-size: 1.06rem;
+      line-height: 1.7;
+      color: #e5e7eb;
+      margin: 0 auto;
+      max-width: 760px;
+    }
+
+    .cta-row{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:12px;
+      flex-wrap:wrap;
+      margin-top: 1.15rem;
+    }
+    .cta {
+      display: inline-block;
+      padding: 16px 28px;
+      background: var(--cta);
+      color: var(--ink);
+      font-size: 1.05rem;
+      font-weight: 900;
+      border-radius: 12px;
+      text-decoration: none;
+      box-shadow: 0 12px 30px rgba(56,189,248,0.12);
+      border: 1px solid rgba(56,189,248,0.22);
+    }
+    .cta:hover { background: var(--ctaHover); }
+    .cta.secondary{
+      background: transparent;
+      color: var(--fg);
+      border: 1px solid var(--border);
+      box-shadow:none;
+    }
+    .cta.secondary:hover{
+      border-color: rgba(56,189,248,0.45);
+      background: rgba(56,189,248,0.08);
+    }
+
+    .tiny {
+      font-size: 0.92rem;
+      color: var(--muted2);
+      margin-top: 0.55rem;
+      text-align: center;
+    }
+
+    .quicklinks{
+      margin-top: 10px;
+      font-size: 0.95rem;
+      color: var(--muted2);
+      display:flex;
+      gap:10px;
+      justify-content:center;
+      align-items:center;
+      flex-wrap:wrap;
+    }
+    .quicklinks a{
+      color: var(--cta);
+      text-decoration: none;
+      font-weight: 900;
+    }
+
+    a:focus-visible, button:focus-visible{
+      outline: 3px solid var(--focus);
+      outline-offset: 2px;
+      border-radius: 12px;
+    }
+
+    /* HERO IMAGE */
+    .hero {
+      position: relative;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      overflow: hidden;
+      margin: 22px auto 0;
+      background: var(--card);
+      max-width: 980px;
+      text-align:left;
+    }
+    .hero img {
+      width: 100%;
+      height: 360px;
+      object-fit: cover;
+      display: block;
+      filter: saturate(1.05) contrast(1.02);
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(2,6,23,0.18) 0%, rgba(2,6,23,0.86) 66%, rgba(2,6,23,1) 100%);
+    }
+    .hero-content {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 22px;
+      z-index: 1;
+      text-align:left;
+    }
+    .hero-kicker {
+      font-size: 0.95rem;
+      color: #e2e8f0;
+      margin: 0 0 6px;
+      opacity: 0.95;
+      font-weight: 800;
+    }
+    .hero-headline {
+      font-size: 1.65rem;
+      margin: 0 0 8px;
+      color: var(--fg);
+      font-weight: 900;
+      letter-spacing: -0.2px;
+      max-width: 760px;
+    }
+    .hero-sub {
+      font-size: 1.03rem;
+      color: #e2e8f0;
+      margin: 0;
+      line-height: 1.55;
+      max-width: 760px;
+    }
+
+    /* Sections */
+    .section { margin-top: 56px; text-align: left; }
+    .section-title {
+      text-align: center;
+      font-size: 1.85rem;
+      margin: 0 0 10px;
+      letter-spacing: -0.2px;
+    }
+    .section-subtitle {
+      text-align: center;
+      color: var(--muted);
+      margin: 0 auto 26px;
+      max-width: 780px;
+      font-size: 1.02rem;
+      line-height: 1.65;
+    }
+
+    /* Cards */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 18px;
+    }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 18px;
+      text-align: left;
+    }
+    .card h3 {
+      margin: 0 0 8px;
+      font-size: 1.06rem;
+      color: #e2e8f0;
+      letter-spacing: -0.1px;
+    }
+    .card p {
+      margin: 0;
+      max-width: none;
+      font-size: 1.0rem;
+      color: #cbd5e1;
+      line-height: 1.6;
+      text-align: left;
+    }
+
+    /* Photo tiles */
+    .tiles{
+      display:grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 18px;
+    }
+    .tile{
+      border-radius: 14px;
+      overflow:hidden;
+      border: 1px solid var(--border);
+      background: var(--card);
+      position:relative;
+    }
+    .tile img{
+      width:100%;
+      height: 160px;
+      object-fit: cover;
+      display:block;
+      filter: saturate(1.05);
+    }
+    .tile .cap{
+      position:absolute;
+      left:10px;
+      bottom:10px;
+      right:10px;
+      font-size:0.92rem;
+      font-weight:900;
+      color: var(--fg);
+      text-shadow: 0 8px 18px rgba(2,6,23,0.75);
+      line-height:1.2;
+      z-index:1;
+    }
+    .tile::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background: linear-gradient(180deg, rgba(2,6,23,0.05) 0%, rgba(2,6,23,0.75) 100%);
+      pointer-events:none;
+    }
+
+    /* Two columns list */
+    .cols {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+      margin-top: 18px;
+    }
+    .box {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 18px;
+    }
+    .box h3 {
+      margin: 0 0 10px;
+      font-size: 1.1rem;
+      color: #e2e8f0;
+      letter-spacing: -0.1px;
+    }
+    ul { list-style: none; padding: 0; margin: 0; }
+    li {
+      display: flex;
+      gap: 10px;
+      margin: 10px 0;
+      color: #cbd5e1;
+      line-height: 1.5;
+      font-size: 1.0rem;
+    }
+    .check { color: var(--cta); font-weight: 900; }
+
+    .divider {
+      height: 1px;
+      background: var(--border);
+      margin: 42px auto 0;
+      max-width: 780px;
+    }
+
+    .faq{ max-width: 780px; margin: 0 auto; text-align:left; }
+    .qa{
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 16px 18px;
+      margin: 12px 0;
+    }
+    .qa b{ display:block; margin-bottom: 6px; color:#e2e8f0; }
+    .qa p{ margin:0; max-width:none; color:#cbd5e1; font-size:1.0rem; text-align:left; }
+
+    footer{
+      margin-top: 26px;
+      color: var(--muted2);
+      font-size: 0.92rem;
+      line-height: 1.6;
+      text-align:center;
+    }
+    footer a{ color: var(--cta); text-decoration: none; font-weight: 900; }
+
+    @media (max-width: 900px){
+      .tiles{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    @media (max-width: 720px) {
+      .container { padding: 28px 18px 64px; }
+      h1 { font-size: 2.35rem; }
+      h2 { font-size: 1.2rem; }
+      .grid, .cols { grid-template-columns: 1fr; }
+      .tiles{ grid-template-columns: 1fr; }
+      .cta { width: 100%; max-width: 420px; }
+      .hero img { height: 280px; }
+      .hero-headline { font-size: 1.35rem; }
+      .topbar{ margin-bottom: 18px; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+
+    <div class="topbar">
+      <a class="brand" href="/es/early-access.html"><span class="dot"></span> GlobalFanID</a>
+
+      <div class="lang" aria-label="Idioma">
+        <a href="/en-early-access.html">EN</a>
+        <a class="active" href="/es/index.html" aria-current="page">ES</a>
+      </div>
+    </div>
+
+    <!-- HERO TEXT -->
+    <h1>GlobalFanID</h1>
+    <h2>Explora cada ciudad a través de su cultura deportiva — como un fan local</h2>
+    <p style="max-width:820px;">
+      Ideas y planes para vivir el deporte en cada ciudad, rituales - lugares icónicos y ambiente local, incluso cuando no hay partido.
+    </p>
+
+    <!-- TOP BUTTONS -->
+    <div class="cta-row">
+      <a class="cta secondary" href="#how">Cómo funciona</a>
+      <!-- ✅ updated -->
+      <a class="cta secondary" href="#preview">Ver preview de Monza + Milán</a>
+    </div>
+
+    <div class="quicklinks" aria-label="Enlaces rápidos">
+      <span>¿Dudas?</span>
+      <a href="#faq">Lee la FAQ</a>
+    </div>
+
+    <div class="tiny">Primeros lanzamientos: Londres & Madrid · Early access gratis (más abajo en esta página)</div>
+
+    <!-- HERO IMAGE BLOCK -->
+    <div class="hero" id="hero">
+      <img src="/assets/hero.jpg" alt="Ambiente de estadio en día de partido" loading="lazy" />
+      <div class="hero-content">
+        <div class="hero-kicker">Early access</div>
+        <div class="hero-headline">Vive el deporte como un fan local — estés donde estés</div>
+        <p class="hero-sub">
+          Descubre experiencias pensadas para fans: lugares icónicos, rituales y dónde se vive el ambiente — como te lo mostraría un fan local.
+        </p>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- HOW IT WORKS -->
+    <div class="section" id="how">
+      <div class="section-title">Cómo funciona</div>
+      <div class="section-subtitle">
+        Es muy fácil: nos dices tu ciudad + tus deportes, y te enviamos las primeras experiencias y contenido exclusivo para early access (acceso anticipado y gratuito).
+      </div>
+
+      <div class="grid">
+        <div class="card">
+          <h3>1) Únete al early access</h3>
+          <p>Dinos a qué ciudad viajas y qué deportes sigues. Tardarás menos de 30 segundos.</p>
+        </div>
+        <div class="card">
+          <h3>2) Recibe las primeras experiencias</h3>
+          <p>Te enviaremos experiencias, ideas y contenido pensados para fans que viajan — antes que nadie.</p>
+        </div>
+        <div class="card">
+          <h3>3) Accede antes a novedades</h3>
+          <p>Los primeros tendrán acceso antes a novedades y ventajas a medida que cerramos colaboraciones.</p>
+        </div>
+        <div class="card">
+          <h3>Ayúdanos a construirlo</h3>
+          <p>Tu feedback decide qué funciones y ciudades lanzamos después.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- ✅ PREVIEW UPDATED: MONZA + MILÁN -->
+    <div class="section" id="preview">
+      <div class="section-title">Monza + Milán (preview)</div>
+      <div class="section-subtitle">
+        Un vistazo a cómo podría ser una guía de ciudad de GlobalFanID — motor legendario, fútbol icónico y cultura deportiva italiana en un mismo viaje.
+      </div>
+
+      <div class="tiles">
+        <div class="tile">
+          <!-- 🔁 replace with your best Monza circuit image -->
+          <img src="/assets/tile-monza-circuit.jpg" alt="Experiencias en el circuito" loading="lazy">
+          <div class="cap">Experiencias en el circuito</div>
+        </div>
+        <div class="tile">
+          <!-- 🔁 replace with tifosi/bar/aperitivo vibe -->
+          <img src="/assets/tile-tifosi-bars.jpg" alt="Bares de tifosi y motor" loading="lazy">
+          <div class="cap">Bares de tifosi y motor</div>
+        </div>
+        <div class="tile">
+          <!-- 🔁 replace with arriving/walking/route vibe -->
+          <img src="/assets/tile-route-matchday.jpg" alt="Rutas al circuito y matchday" loading="lazy">
+          <div class="cap">Rutas al circuito y matchday</div>
+        </div>
+        <div class="tile">
+          <!-- 🔁 replace with San Siro / Milan iconic sports vibe -->
+          <img src="/assets/tile-milan-icons.jpg" alt="Monza + Milán: lugares icónicos" loading="lazy">
+          <div class="cap">Monza + Milán: lugares icónicos</div>
+        </div>
+      </div>
+
+      <div class="grid">
+        <div class="card">
+          <h3>🏁 Autodromo di Monza y motor legendario</h3>
+          <p>Curvas míticas, historia y rituales de tifosi — el ambiente se nota incluso cuando no hay carrera.</p>
+        </div>
+        <div class="card">
+          <h3>🏟️ San Siro y fútbol icónico (Milán)</h3>
+          <p>Dos clubes históricos y una de las experiencias de día de partido más reconocibles de Europa — barrios, bares y cultura local.</p>
+        </div>
+        <div class="card">
+          <h3>🌳 Parco di Monza y plan sin evento</h3>
+          <p>El contraste perfecto: paseos, deporte y ritmo local. Ideas para disfrutar Monza aunque no haya competición ese día.</p>
+        </div>
+        <div class="card">
+          <h3>🍻 Ambiente deportivo italiano</h3>
+          <p>Dónde se juntan los fans antes y después — rituales, rutas de llegada y la energía que rodea cada gran cita.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- VALUE -->
+    <div class="section" id="value">
+      <div class="section-title">Lo que desbloquea GlobalFanID</div>
+      <div class="section-subtitle">
+        Una forma distinta de viajar como fan — para quienes buscan algo más que “qué hacer en una ciudad”.
+      </div>
+
+      <div class="cols">
+        <div class="box">
+          <h3>✅ Lo que obtienes</h3>
+          <ul>
+            <li><span class="check">✔</span> Estadios, recintos y lugares deportivos icónicos — grandes recintos y campos locales</li>
+            <li><span class="check">✔</span> Tradiciones más allá de la grada — rutas, rituales, barrios</li>
+            <li><span class="check">✔</span> Cultura deportiva local difícil de encontrar por tu cuenta</li>
+            <li><span class="check">✔</span> Experiencias conectadas a eventos reales — incluso si ese día no hay partido</li>
+          </ul>
+        </div>
+
+        <div class="box">
+          <h3>🤝 Más que acceso — pertenencia</h3>
+          <ul>
+            <li><span class="check">✔</span> Conecta con fans viajeros y locales</li>
+            <li><span class="check">✔</span> Descubre dónde se reúnen antes del partido</li>
+            <li><span class="check">✔</span> Recibe tips y recomendaciones locales</li>
+            <li><span class="check">✔</span> Siéntete parte de la ciudad desde el primer día</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- WHAT IT IS / ISN'T + FINAL CTA -->
+    <div class="section" id="what">
+      <div class="section-title">Qué es (y qué no es)</div>
+      <div class="section-subtitle">
+        <b>No es venta de entradas. No es una membresía. No es turismo masivo.</b><br/>
+        GlobalFanID conecta lo que ya existe — y añade lo que falta.
+      </div>
+
+      <div class="box" style="max-width: 780px; margin: 0 auto; text-align: left;">
+        <h3>Fase de early access</h3>
+        <p style="max-width:none; text-align:left; margin:0;">
+          Únete como early supporter y ayúdanos a definir en qué se convierte GlobalFanID.
+          <br/><br/>
+          <b>El early access (acceso anticipado) es gratis.</b> Algunas novedades pueden llegar más adelante — siempre opcionales.
+        </p>
+      </div>
+
+      <div class="cta-row" style="margin-top:22px;">
+        <a class="cta"
+           href="https://docs.google.com/forms/d/e/1FAIpQLSePnEQ1hdCRYzhTUjWZlcwxSuX9udNkwZwp0iJQdqlxdvr-rw/viewform?usp=dialog"
+           target="_blank"
+           rel="noopener">
+          ACCEDE AL EARLY ACCESS (60s)
+        </a>
+      </div>
+      <div class="tiny">Gratis · 30 segundos · Sin compromiso</div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- FAQ -->
+    <div class="section" id="faq">
+      <div class="section-title">FAQ</div>
+      <div class="section-subtitle">Respuestas rápidas — para que sepas exactamente a qué te apuntas.</div>
+
+      <div class="faq">
+        <div class="qa">
+          <b>¿Es gratis?</b>
+          <p>Sí. El early access (acceso anticipado) es gratis. Si más adelante introducimos funciones de pago, serán opcionales.</p>
+        </div>
+        <div class="qa">
+          <b>¿Va de entradas?</b>
+          <p>No — no es una plataforma de ticketing. Va de experiencias de ciudad pensadas para fans.</p>
+        </div>
+        <div class="qa">
+          <b>¿Cuándo recibo algo después de apuntarme?</b>
+          <p>Te enviaremos los primeros avances a medida que los vayamos lanzando. Accederás antes que nadie.</p>
+        </div>
+        <div class="qa">
+          <b>¿Vais a hacer spam?</b>
+          <p>No. Solo te contactaremos sobre el early access y los primeros lanzamientos.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <footer>
+      Contacto: <a href="mailto:alex@kairu.tech">alex@kairu.tech</a>
+      &nbsp;·&nbsp; <a href="/privacy.html">Privacidad</a><br/>
+      © <span id="y"></span> GlobalFanID
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
