@@ -1,17 +1,15 @@
 <!doctype html>
-<html lang="en">
+<html lang="es">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Lisbon · Sports Picks (Q1) — GlobalFanID</title>
-  <meta name="description" content="Curated sports experiences in Lisbon — picked for fans travelling for sport, beyond the match. Fan-first, no ticketing." />
+  <title>Lisboa · Picks Deportivos (Q1) — GlobalFanID</title>
+  <meta name="description" content="Selección curada de experiencias deportivas en Lisboa — pensada para fans que viajan por deporte, más allá del partido. Fan-first, sin ticketing." />
 
   <style>
     :root{
       --bg0:#070b16;
       --bg1:#0b1330;
-      --card: rgba(255,255,255,.06);
-      --card2: rgba(255,255,255,.08);
       --border: rgba(255,255,255,.10);
       --text:#f3f6ff;
       --muted: rgba(243,246,255,.72);
@@ -19,7 +17,6 @@
       --accent:#49b6ff;
       --accent2:#73d7ff;
       --shadow: 0 18px 60px rgba(0,0,0,.45);
-      --radius: 18px;
       --radius2: 26px;
       --container: 1120px;
     }
@@ -78,7 +75,7 @@
     .brand small{
       display:block;
       font-weight:600;
-      color: var(--muted2);
+      color: rgba(243,246,255,.45);
       letter-spacing:.3px;
       margin-top:2px;
       font-size:12px;
@@ -98,7 +95,7 @@
       border-radius:999px;
       border:1px solid rgba(255,255,255,.10);
       background: rgba(255,255,255,.04);
-      color: var(--muted);
+      color: rgba(243,246,255,.72);
       font-size:13px;
       transition: transform .15s ease, background .15s ease, border-color .15s ease;
       user-select:none;
@@ -111,28 +108,57 @@
 
     /* Hero */
     .hero{
-      padding: 64px 0 34px;
+      padding: 52px 0 30px;
       text-align:center;
+    }
+
+    /* Opcional: imagen/“cover” en el hero (pon tu archivo en /images/lisboa-hero.jpg) */
+    .hero-cover{
+      width:min(980px, 96vw);
+      margin: 0 auto 18px;
+      border-radius: 26px;
+      border: 1px solid rgba(255,255,255,.10);
+      overflow:hidden;
+      box-shadow: var(--shadow);
+      position:relative;
+      aspect-ratio: 21 / 9;
+      background:
+        radial-gradient(900px 320px at 20% 0%, rgba(73,182,255,.20), transparent 60%),
+        linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+    }
+    .hero-cover img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+      opacity:.92;
+      filter:saturate(1.05) contrast(1.02);
+    }
+    .hero-cover .overlay{
+      position:absolute;
+      inset:0;
+      background: linear-gradient(180deg, rgba(7,11,22,.10), rgba(7,11,22,.55));
+      pointer-events:none;
     }
     .hero h1{
       margin:0;
-      font-size: clamp(44px, 6vw, 84px);
+      font-size: clamp(40px, 6vw, 80px);
       line-height: 1.02;
       letter-spacing: -1.2px;
       font-weight: 800;
     }
     .hero .subtitle{
-      margin: 18px auto 0;
-      max-width: 960px;
+      margin: 16px auto 0;
+      max-width: 980px;
       font-size: clamp(18px, 2.2vw, 28px);
       line-height: 1.25;
       color: var(--muted);
       font-weight: 500;
     }
     .hero .lead{
-      margin: 18px auto 0;
+      margin: 14px auto 0;
       max-width: 980px;
-      font-size: clamp(16px, 1.7vw, 22px);
+      font-size: clamp(16px, 1.7vw, 21px);
       line-height: 1.55;
       color: var(--muted2);
     }
@@ -141,7 +167,7 @@
       gap:14px;
       justify-content:center;
       flex-wrap:wrap;
-      margin: 28px 0 18px;
+      margin: 22px 0 14px;
     }
     .btn{
       display:inline-flex;
@@ -156,7 +182,6 @@
       color: var(--text);
       font-weight: 700;
       font-size: 18px;
-      box-shadow: 0 0 0 rgba(0,0,0,0);
       transition: transform .15s ease, background .15s ease, border-color .15s ease;
     }
     .btn:hover{
@@ -174,7 +199,7 @@
     }
 
     .feedback{
-      margin-top: 10px;
+      margin-top: 8px;
       color: var(--muted2);
       font-size: 18px;
     }
@@ -184,6 +209,7 @@
       margin-left: 8px;
     }
     .feedback a:hover{ text-decoration:underline; }
+
     .footnote{
       margin-top: 10px;
       color: rgba(243,246,255,.35);
@@ -192,9 +218,7 @@
     }
 
     /* Sections */
-    section{
-      padding: 26px 0;
-    }
+    section{ padding: 24px 0; }
     .section-head{
       display:flex;
       align-items:flex-end;
@@ -210,7 +234,7 @@
     }
     .section-head p{
       margin:0;
-      max-width: 720px;
+      max-width: 740px;
       color: var(--muted2);
       line-height:1.5;
       font-size: 15px;
@@ -256,7 +280,7 @@
       border-radius:999px;
       border:1px solid rgba(255,255,255,.12);
       background: rgba(255,255,255,.04);
-      color: var(--muted);
+      color: rgba(243,246,255,.72);
       font-size:12px;
       font-weight:700;
       letter-spacing:.2px;
@@ -273,6 +297,25 @@
       line-height:1.5;
       font-size: 14px;
     }
+
+    /* Mini imagen dentro de cada tarjeta (opcional) */
+    .thumb{
+      width:100%;
+      height: 150px;
+      border-radius: 18px;
+      border:1px solid rgba(255,255,255,.10);
+      overflow:hidden;
+      margin: 10px 0 12px;
+      background: rgba(255,255,255,.04);
+    }
+    .thumb img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+      opacity:.92;
+    }
+
     .links{
       display:flex;
       gap:10px;
@@ -352,12 +395,12 @@
     }
     label{
       display:block;
-      color: var(--muted);
+      color: rgba(243,246,255,.72);
       font-size: 13px;
       font-weight: 700;
       margin: 10px 0 6px;
     }
-    input, textarea, select{
+    input, textarea{
       width:100%;
       background: rgba(0,0,0,.18);
       border:1px solid rgba(255,255,255,.12);
@@ -368,7 +411,7 @@
       font-size: 14px;
     }
     textarea{ min-height: 110px; resize: vertical; }
-    input:focus, textarea:focus, select:focus{
+    input:focus, textarea:focus{
       border-color: rgba(73,182,255,.50);
       box-shadow: 0 0 0 4px rgba(73,182,255,.14);
     }
@@ -402,22 +445,24 @@
     .footer-inner a{ color: rgba(243,246,255,.58); }
     .footer-inner a:hover{ color: var(--text); text-decoration:underline; }
 
-    /* Responsive */
     @media (max-width: 980px){
       .card{ grid-column: span 12; }
       .category{ grid-column: span 6; }
       .feedback-wrap{ grid-template-columns: 1fr; }
       .btn{ min-width: 220px; }
+      .hero-cover{ aspect-ratio: 16 / 9; }
+      .thumb{ height: 170px; }
     }
     @media (max-width: 520px){
       .btn{ width: 100%; min-width: unset; }
       .category{ grid-column: span 12; }
+      .hero{ padding-top: 40px; }
     }
   </style>
 </head>
 
 <body>
-  <!-- Top bar -->
+  <!-- Barra superior -->
   <div class="topbar">
     <div class="container">
       <div class="topbar-inner">
@@ -425,13 +470,13 @@
           <span class="dot" aria-hidden="true"></span>
           <div>
             GlobalFanID
-            <small>Discovery layer for sports travel</small>
+            <small>Discovery layer para viajes por deporte</small>
           </div>
         </div>
 
-        <nav class="nav" aria-label="Page">
-          <a class="chip" href="#quarter">This quarter</a>
-          <a class="chip" href="#categories">Categories</a>
+        <nav class="nav" aria-label="Navegación">
+          <a class="chip" href="#quarter">Este trimestre</a>
+          <a class="chip" href="#categorias">Categorías</a>
           <a class="chip" href="#feedback">Feedback</a>
         </nav>
       </div>
@@ -441,178 +486,212 @@
   <!-- Hero -->
   <header class="hero">
     <div class="container">
-      <h1>Lisbon · Sports Picks (Q1)</h1>
+
+      <!-- FOTO HERO (opcional)
+           1) Crea una carpeta /images
+           2) Añade una imagen: lisboa-hero.jpg
+           3) Descomenta el <img> de abajo
+      -->
+      <div class="hero-cover" aria-label="Imagen de Lisboa (opcional)">
+        <!-- <img src="images/lisboa-hero.jpg" alt="Lisboa, ambiente deportivo" loading="lazy" /> -->
+        <div class="overlay" aria-hidden="true"></div>
+      </div>
+
+      <h1>Lisboa · Picks Deportivos (Q1)</h1>
 
       <div class="subtitle">
-        Curated sports experiences in Lisbon — picked for fans travelling for sport, beyond the match.
+        Experiencias deportivas curadas en Lisboa — pensadas para fans que viajan por deporte, más allá del partido.
       </div>
 
       <div class="lead">
-        A quarterly selection: matchday atmosphere, stadium context, local sports culture, and the best
-        “fan” plans before and after the game.
+        Selección actualizada por trimestre: ambiente de día de partido, contexto del estadio, cultura deportiva local
+        y los mejores planes “de fan” antes y después del partido.
       </div>
 
       <div class="actions">
-        <a class="btn primary" href="#quarter">What’s on this quarter</a>
-        <a class="btn" href="#categories">Browse categories</a>
+        <a class="btn primary" href="#quarter">Qué hay este trimestre</a>
+        <a class="btn" href="#categorias">Ver categorías</a>
       </div>
 
       <div class="feedback">
-        Got feedback? <a href="#feedback">Tell me what’s missing</a>
+        ¿Tienes feedback? <a href="#feedback">Dime qué falta</a>
       </div>
 
       <div class="footnote">
-        Pilot city page · Lisbon Q1 · Fan-first, no ticketing
+        Página piloto de ciudad · Lisboa Q1 · Fan-first, sin ticketing
       </div>
     </div>
   </header>
 
-  <!-- Quarter picks -->
+  <!-- Contenido -->
   <main class="container">
-    <section id="quarter" aria-label="Quarter picks">
+
+    <!-- Picks del trimestre -->
+    <section id="quarter" aria-label="Picks del trimestre">
       <div class="section-head">
         <div>
-          <h2>This quarter’s picks</h2>
+          <h2>Lo mejor de este trimestre</h2>
           <p>
-            Built for real sports trips (especially groups). Click through to maps/search and use it like you would for a match away day.
+            Hecho para viajes deportivos reales (y para grupos). Usa los botones como lo harías para organizar un desplazamiento.
           </p>
         </div>
       </div>
 
       <div class="grid">
-        <!-- 1: Before match -->
-        <article class="card" id="before-match">
+        <!-- 1: Antes del partido -->
+        <article class="card" id="antes-partido">
           <div class="kicker">
-            <span class="tag"><b>1</b> · Before the match</span>
-            <span class="tag">Group-friendly</span>
+            <span class="tag"><b>1</b> · Antes del partido</span>
+            <span class="tag">Ideal para grupo</span>
           </div>
-          <h3>Where to meet, eat, and build the day</h3>
+          <h3>Dónde quedar, comer y montar el día</h3>
           <p>
-            Easy areas to gather, warm up the atmosphere, and keep the group moving without stress.
+            Zonas fáciles para reunirse, calentar ambiente y mover al grupo sin estrés.
           </p>
+
+          <!-- FOTO TARJETA (opcional): mete /images/lisboa-meet.jpg y descomenta -->
+          <div class="thumb" aria-label="Imagen (opcional)">
+            <!-- <img src="images/lisboa-meet.jpg" alt="Zona de quedada en Lisboa" loading="lazy" /> -->
+          </div>
+
           <div class="links">
             <a class="linkbtn accent" target="_blank" rel="noopener"
                href="https://www.google.com/maps/search/?api=1&query=Marqu%C3%AAs+de+Pombal+Lisboa">
-              Open meeting zone (Maps)
+              Abrir zona de quedada (Maps)
             </a>
             <a class="linkbtn" target="_blank" rel="noopener"
                href="https://www.google.com/maps/search/?api=1&query=sports+bar+Lisbon">
-              Sports bars (Maps)
+              Bares deportivos (Maps)
             </a>
             <a class="linkbtn" target="_blank" rel="noopener"
-               href="https://www.google.com/search?q=how+to+get+to+Est%C3%A1dio+da+Luz+from+city+centre">
-              How to get to Estádio da Luz
+               href="https://www.google.com/search?q=c%C3%B3mo+llegar+al+Est%C3%A1dio+da+Luz+desde+el+centro+de+Lisboa">
+              Cómo llegar al Estádio da Luz
             </a>
           </div>
         </article>
 
-        <!-- 2: Stadium + context -->
-        <article class="card" id="stadium-context">
+        <!-- 2: Estadio + contexto -->
+        <article class="card" id="estadio-contexto">
           <div class="kicker">
-            <span class="tag"><b>2</b> · Stadium & context</span>
-            <span class="tag">Beyond the match</span>
+            <span class="tag"><b>2</b> · Estadio & contexto</span>
+            <span class="tag">Más allá del partido</span>
           </div>
-          <h3>Estádio da Luz and Benfica culture</h3>
+          <h3>Estádio da Luz y cultura del Benfica</h3>
           <p>
-            The essentials to understand the place: stadium, history, and what makes matchday feel different in Lisbon.
+            Lo esencial para entender el lugar: estadio, historia y cómo se vive el día de partido en Lisboa.
           </p>
+
+          <div class="thumb" aria-label="Imagen (opcional)">
+            <!-- <img src="images/lisboa-luz.jpg" alt="Estádio da Luz" loading="lazy" /> -->
+          </div>
+
           <div class="links">
             <a class="linkbtn accent" target="_blank" rel="noopener"
                href="https://www.google.com/maps/search/?api=1&query=Est%C3%A1dio+da+Luz">
               Estádio da Luz (Maps)
             </a>
             <a class="linkbtn" target="_blank" rel="noopener"
-               href="https://www.google.com/search?q=Benfica+museum+Est%C3%A1dio+da+Luz+visit">
-              Benfica museum / tour (Search)
+               href="https://www.google.com/search?q=museo+del+benfica+visita+est%C3%A1dio+da+luz">
+              Museo / tour del Benfica
             </a>
             <a class="linkbtn" target="_blank" rel="noopener"
-               href="https://www.google.com/search?q=Benfica+history+european+cup">
-              Benfica in Europe (Search)
+               href="https://www.google.com/search?q=Benfica+historia+en+Europa">
+              Benfica en Europa
             </a>
           </div>
         </article>
 
-        <!-- 3: Other sports -->
-        <article class="card" id="other-sports">
+        <!-- 3: Otros deportes -->
+        <article class="card" id="otros-deportes">
           <div class="kicker">
-            <span class="tag"><b>3</b> · Other sports in Lisbon</span>
-            <span class="tag">If you’ve got time</span>
+            <span class="tag"><b>3</b> · Otros deportes en Lisboa</span>
+            <span class="tag">Si tienes tiempo</span>
           </div>
-          <h3>Basket, rugby, surf, and more</h3>
+          <h3>Basket, rugby, surf… y más</h3>
           <p>
-            Lisbon’s sports scene goes wider than football. Perfect for a “day before / day after” plan.
+            Lisboa va mucho más allá del fútbol. Perfecto para “día antes / día después”.
           </p>
+
+          <div class="thumb" aria-label="Imagen (opcional)">
+            <!-- <img src="images/lisboa-surf.jpg" alt="Surf cerca de Lisboa" loading="lazy" /> -->
+          </div>
+
           <div class="links">
             <a class="linkbtn" target="_blank" rel="noopener"
-               href="https://www.google.com/search?q=Benfica+basketball+schedule">
-              Benfica basketball (Search)
+               href="https://www.google.com/search?q=Benfica+baloncesto+calendario">
+              Benfica (baloncesto)
             </a>
             <a class="linkbtn" target="_blank" rel="noopener"
-               href="https://www.google.com/search?q=rugby+club+Lisbon+match">
-              Rugby in Lisbon (Search)
+               href="https://www.google.com/search?q=partido+rugby+Lisboa+este+fin+de+semana">
+              Rugby en Lisboa
             </a>
             <a class="linkbtn accent" target="_blank" rel="noopener"
-               href="https://www.google.com/maps/search/?api=1&query=surf+school+Carcavelos">
-              Surf near Lisbon (Maps)
+               href="https://www.google.com/maps/search/?api=1&query=escuela+de+surf+Carcavelos">
+              Surf cerca de Lisboa (Maps)
             </a>
           </div>
         </article>
 
-        <!-- 4: Live like a local -->
-        <article class="card" id="local-vibes">
+        <!-- 4: Ambiente local -->
+        <article class="card" id="ambiente-local">
           <div class="kicker">
-            <span class="tag"><b>4</b> · Live it like a local</span>
-            <span class="tag">Atmosphere</span>
+            <span class="tag"><b>4</b> · Vive el ambiente local</span>
+            <span class="tag">Atmósfera</span>
           </div>
-          <h3>Where the city “breathes sport”</h3>
+          <h3>Dónde se “respira deporte” en la ciudad</h3>
           <p>
-            Spots and routines that make the trip feel local: where fans watch big games, pre/post-match flow, and late bites.
+            Sitios y rutinas para que el viaje se sienta local: dónde se ven partidos grandes, flujo pre/post y opciones de cena tarde.
           </p>
+
+          <div class="thumb" aria-label="Imagen (opcional)">
+            <!-- <img src="images/lisboa-vibes.jpg" alt="Ambiente deportivo en Lisboa" loading="lazy" /> -->
+          </div>
+
           <div class="links">
+            <a class="linkbtn" target="_blank" rel="noopener"
+               href="https://www.google.com/maps/search/?api=1&query=sports+bar+Lisboa+centro">
+              Ver ambiente (Maps)
+            </a>
+            <a class="linkbtn" target="_blank" rel="noopener"
+               href="https://www.google.com/maps/search/?api=1&query=cena+tarde+Lisboa">
+              Cenar tarde (Maps)
+            </a>
             <a class="linkbtn accent" target="_blank" rel="noopener"
-               href="https://www.google.com/maps/search/?api=1&query=Campo+Pequeno+Lisboa">
-              Local arena area (Maps)
-            </a>
-            <a class="linkbtn" target="_blank" rel="noopener"
-               href="https://www.google.com/maps/search/?api=1&query=late+dinner+Lisbon">
-              Late dinner options (Maps)
-            </a>
-            <a class="linkbtn" target="_blank" rel="noopener"
-               href="https://www.google.com/search?q=best+places+to+watch+champions+league+in+Lisbon">
-              Watch big games in Lisbon
+               href="https://www.google.com/search?q=d%C3%B3nde+ver+champions+en+Lisboa">
+              Dónde ver Champions en Lisboa
             </a>
           </div>
         </article>
       </div>
     </section>
 
-    <!-- Categories -->
-    <section id="categories" aria-label="Browse categories">
+    <!-- Categorías -->
+    <section id="categorias" aria-label="Ver por categorías">
       <div class="section-head">
         <div>
-          <h2>Browse categories</h2>
+          <h2>Ver por categorías</h2>
           <p>
-            Jump to what you need. This is built to be skimmed fast on mobile while the group is making decisions.
+            Salta directo a lo que necesitas. Pensado para escanear rápido desde el móvil mientras el grupo decide.
           </p>
         </div>
       </div>
 
       <div class="category-grid">
-        <a class="category" href="#before-match">
-          <h4>Before the match</h4>
-          <p>Meet-up zones, food, transport, stress-free movement.</p>
+        <a class="category" href="#antes-partido">
+          <h4>Antes del partido</h4>
+          <p>Quedada, comida, transporte, movimiento fácil.</p>
         </a>
-        <a class="category" href="#stadium-context">
-          <h4>Stadium & context</h4>
-          <p>Where you’re going, what it means, and how it feels.</p>
+        <a class="category" href="#estadio-contexto">
+          <h4>Estadio & contexto</h4>
+          <p>Dónde vas, qué significa y cómo se vive.</p>
         </a>
-        <a class="category" href="#other-sports">
-          <h4>Other sports</h4>
-          <p>Basket, rugby, surf—build a full sports weekend.</p>
+        <a class="category" href="#otros-deportes">
+          <h4>Otros deportes</h4>
+          <p>Basket, rugby, surf… fin de semana deportivo.</p>
         </a>
-        <a class="category" href="#local-vibes">
-          <h4>Live it like a local</h4>
-          <p>Atmosphere spots, watching big games, post-match flow.</p>
+        <a class="category" href="#ambiente-local">
+          <h4>Ambiente local</h4>
+          <p>Ver partidos, atmósfera, post-partido y cena tarde.</p>
         </a>
       </div>
     </section>
@@ -621,74 +700,74 @@
     <section id="feedback" aria-label="Feedback">
       <div class="section-head">
         <div>
-          <h2>Tell me what’s missing</h2>
+          <h2>Dime qué falta</h2>
           <p>
-            This is fan-first and intentionally simple. Your feedback decides what gets built next.
+            Esto es fan-first y a propósito simple. Tu feedback decide qué se construye después.
           </p>
         </div>
       </div>
 
       <div class="feedback-wrap">
         <div class="panel">
-          <!-- Replace action with your form provider (Tally / Typeform / Google Forms / ConvertKit etc.) -->
+          <!-- Sustituye action por tu proveedor (Tally / Typeform / Google Forms / etc.) -->
           <form action="#" method="post" onsubmit="return fakeSubmit(event)">
-            <label for="name">Name</label>
-            <input id="name" name="name" autocomplete="name" placeholder="Your name" />
+            <label for="nombre">Nombre</label>
+            <input id="nombre" name="nombre" autocomplete="name" placeholder="Tu nombre" />
 
-            <label for="group">Group / Peña (optional)</label>
-            <input id="group" name="group" placeholder="e.g., Peña Madridistas London" />
+            <label for="pena">Peña / Grupo (opcional)</label>
+            <input id="pena" name="pena" placeholder="Ej.: Peña Madridistas London" />
 
-            <label for="from">Country / City you’re travelling from</label>
-            <input id="from" name="from" placeholder="e.g., UK · London" />
+            <label for="origen">País / ciudad desde donde viajas</label>
+            <input id="origen" name="origen" placeholder="Ej.: Reino Unido · Londres" />
 
-            <label for="msg">What’s missing or what would make this genuinely useful?</label>
-            <textarea id="msg" name="msg" placeholder="Be brutally honest — what would you add/remove?"></textarea>
+            <label for="msg">¿Qué falta o qué haría esto realmente útil?</label>
+            <textarea id="msg" name="msg" placeholder="Sé brutalmente honesto: ¿qué añadirías/quitarías?"></textarea>
 
             <div class="form-actions">
               <button class="btn primary" type="submit" style="min-width:220px;padding:14px 18px;font-size:16px;border-radius:16px;">
-                Send feedback
+                Enviar feedback
               </button>
               <div class="tiny">
-                No ticketing. No spam. This is just to improve the city page.
+                Sin ticketing. Sin spam. Esto es solo para mejorar la página de ciudad.
               </div>
             </div>
           </form>
         </div>
 
         <div class="panel">
-          <div class="tag" style="display:inline-flex;margin-bottom:10px;">Quick prompts</div>
+          <div class="tag" style="display:inline-flex;margin-bottom:10px;">Preguntas rápidas</div>
           <p style="margin:0 0 10px;color:var(--muted2);line-height:1.55;">
-            If you’re short on time, just answer one:
+            Si tienes poco tiempo, contesta una:
           </p>
           <ul style="margin:0;padding-left:18px;color:var(--muted);line-height:1.65;">
-            <li>Would you use this for an away day? When?</li>
-            <li>What would you send to your group WhatsApp?</li>
-            <li>What’s the #1 pain when organising a sports trip?</li>
-            <li>Which button should exist but doesn’t?</li>
+            <li>¿Lo usarías para un desplazamiento? ¿Cuándo?</li>
+            <li>¿Qué enlace mandarías al WhatsApp del grupo?</li>
+            <li>¿Cuál es el mayor dolor al organizar un viaje deportivo?</li>
+            <li>¿Qué botón debería existir y no está?</li>
           </ul>
 
           <div style="height:12px"></div>
 
-          <a class="linkbtn accent" href="#quarter">Back to picks</a>
-          <a class="linkbtn" href="#categories">Browse categories</a>
+          <a class="linkbtn accent" href="#quarter">Volver a picks</a>
+          <a class="linkbtn" href="#categorias">Ver categorías</a>
         </div>
       </div>
     </section>
 
     <footer>
       <div class="footer-inner">
-        <div>© <span id="year"></span> GlobalFanID · Pilot city page (Lisbon Q1)</div>
+        <div>© <span id="year"></span> GlobalFanID · Página piloto (Lisboa Q1)</div>
         <div>
           <a href="#feedback">Feedback</a> ·
-          <a href="#quarter">This quarter</a> ·
-          <a href="#categories">Categories</a>
+          <a href="#quarter">Este trimestre</a> ·
+          <a href="#categorias">Categorías</a>
         </div>
       </div>
     </footer>
   </main>
 
   <script>
-    // Smooth scroll for internal anchors
+    // Scroll suave para anchors internos
     document.addEventListener("click", (e) => {
       const a = e.target.closest('a[href^="#"]');
       if (!a) return;
@@ -699,17 +778,17 @@
       el.scrollIntoView({ behavior: "smooth", block: "start" });
     });
 
-    // Fake submit (replace with real form provider)
+    // Envío demo (reemplazar con proveedor real)
     function fakeSubmit(event){
       event.preventDefault();
       const form = event.target;
-      const name = (form.querySelector("#name")?.value || "").trim();
-      alert((name ? `Thanks, ${name}!` : "Thanks!") + " Feedback received (demo). Replace the form action with your provider.");
+      const nombre = (form.querySelector("#nombre")?.value || "").trim();
+      alert((nombre ? `¡Gracias, ${nombre}!` : "¡Gracias!") + " Feedback recibido (demo). Sustituye el action del formulario por tu proveedor.");
       form.reset();
       return false;
     }
 
-    // Year
+    // Año
     document.getElementById("year").textContent = new Date().getFullYear();
   </script>
 </body>
