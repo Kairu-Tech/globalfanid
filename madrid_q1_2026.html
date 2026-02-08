@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>GlobalFanID · Madrid Q1</title>
+  <title>GlobalFanID · Madrid · Sports Picks (Q1)</title>
   <meta name="description" content="Madrid Q1: curated sports experiences for fans who explore cities through sport — beyond the match." />
 
   <style>
@@ -58,7 +58,6 @@
       display:inline-block;
     }
 
-    /* Language switcher */
     .lang{
       font-size:0.95rem;
       color: var(--muted2);
@@ -74,22 +73,16 @@
       border-radius: 999px;
       border: 1px solid transparent;
     }
-    .lang a:hover{
-      border-color: rgba(56,189,248,0.35);
-      background: rgba(56,189,248,0.08);
-    }
     .lang .active{
       color: var(--fg);
       border-color: rgba(148,163,184,0.35);
       background: rgba(255,255,255,0.06);
-      cursor: default;
       pointer-events: none;
     }
 
     h1 {
       font-size: 3rem;
       margin: 0 0 0.55rem;
-      letter-spacing: -0.5px;
     }
     h2 {
       font-size: 1.35rem;
@@ -97,7 +90,6 @@
       color: var(--muted);
       margin: 0 auto 0.95rem;
       max-width: 860px;
-      line-height: 1.5;
     }
     p {
       font-size: 1.06rem;
@@ -107,62 +99,6 @@
       max-width: 760px;
     }
 
-    .cta-row{
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      gap:12px;
-      flex-wrap:wrap;
-      margin-top: 1.15rem;
-    }
-    .cta {
-      display: inline-block;
-      padding: 16px 28px;
-      background: var(--cta);
-      color: var(--ink);
-      font-size: 1.05rem;
-      font-weight: 900;
-      border-radius: 12px;
-      text-decoration: none;
-      box-shadow: 0 12px 30px rgba(56,189,248,0.12);
-      border: 1px solid rgba(56,189,248,0.22);
-    }
-    .cta:hover { background: var(--ctaHover); }
-    .cta.secondary{
-      background: transparent;
-      color: var(--fg);
-      border: 1px solid var(--border);
-      box-shadow:none;
-    }
-    .cta.secondary:hover{
-      border-color: rgba(56,189,248,0.45);
-      background: rgba(56,189,248,0.08);
-    }
-
-    .tiny {
-      font-size: 0.92rem;
-      color: var(--muted2);
-      margin-top: 0.55rem;
-      text-align: center;
-    }
-
-    .quicklinks{
-      margin-top: 10px;
-      font-size: 0.95rem;
-      color: var(--muted2);
-      display:flex;
-      gap:10px;
-      justify-content:center;
-      align-items:center;
-      flex-wrap:wrap;
-    }
-    .quicklinks a{
-      color: var(--cta);
-      text-decoration: none;
-      font-weight: 900;
-    }
-
-    /* HERO IMAGE */
     .hero {
       position: relative;
       border: 1px solid var(--border);
@@ -170,20 +106,17 @@
       overflow: hidden;
       margin: 22px auto 0;
       background: var(--card);
-      max-width: 980px;
-      text-align:left;
     }
     .hero img {
       width: 100%;
       height: 360px;
       object-fit: cover;
-      display: block;
     }
     .hero::after {
       content: "";
       position: absolute;
       inset: 0;
-      background: linear-gradient(180deg, rgba(2,6,23,0.18) 0%, rgba(2,6,23,0.86) 66%, rgba(2,6,23,1) 100%);
+      background: linear-gradient(180deg, rgba(2,6,23,0.2) 0%, rgba(2,6,23,0.9) 100%);
     }
     .hero-content {
       position: absolute;
@@ -193,13 +126,14 @@
       justify-content: flex-end;
       padding: 22px;
       z-index: 1;
+      text-align:left;
     }
 
     .section { margin-top: 56px; text-align: left; }
     .section-title {
       text-align: center;
       font-size: 1.85rem;
-      margin: 0 0 10px;
+      margin-bottom: 10px;
     }
     .section-subtitle {
       text-align: center;
@@ -223,8 +157,14 @@
     .divider {
       height: 1px;
       background: var(--border);
-      margin: 42px auto 0;
+      margin: 42px auto;
       max-width: 780px;
+    }
+
+    footer{
+      margin-top: 26px;
+      color: var(--muted2);
+      font-size: 0.92rem;
     }
   </style>
 </head>
@@ -243,60 +183,81 @@
   <h1>Madrid · Sports Picks (Q1)</h1>
   <h2>Curated sports experiences in Madrid — the ones local fans love, beyond the match.</h2>
   <p>
-    A living selection updated every quarter — not everything that’s happening,
-    just the sports experiences that actually make sense for travelling fans.
+    A living selection updated every quarter.  
+    Not everything that’s happening — just what actually makes sense for travelling sports fans.
   </p>
 
   <div class="hero">
     <img src="/assets/hero.jpg" alt="Matchday atmosphere in Madrid">
     <div class="hero-content">
       <h3>A sports-first way to explore the city</h3>
-      <p>Pick experiences that match your vibe — iconic venues, local rituals and real fan culture.</p>
+      <p>Iconic venues, local rituals and real fan culture — even when there’s no game on.</p>
     </div>
   </div>
 
   <div class="divider"></div>
 
+  <!-- WHAT MATTERS -->
   <div class="section">
-    <div class="section-title">What matters this quarter · Madrid Q1</div>
+    <div class="section-title">What matters this quarter</div>
     <div class="section-subtitle">
-      Not a calendar. A fan-curated snapshot of the sports moments and experiences
-      that are worth it in Madrid right now.
+      Not a calendar. A fan-curated snapshot of what’s worth doing in Madrid right now.
     </div>
 
     <div class="grid">
       <div class="card">
         <h3>⚽ Football — top flight & local identity</h3>
         <p><b>Why now:</b> strong matchday energy with fewer tourist crowds.</p>
-        <p><b>What to look for:</b> elite stadiums, neighbourhood grounds, women’s football and lower leagues.</p>
+        <p><b>Look for:</b> elite stadiums, neighbourhood grounds, women’s football and lower leagues.</p>
       </div>
 
       <div class="card">
         <h3>🏀 Basketball — EuroLeague & ACB</h3>
-        <p><b>Why now:</b> one of the most active periods of the season in Madrid.</p>
-        <p><b>What to look for:</b> elite European nights and deep local basketball culture.</p>
+        <p><b>Why now:</b> one of the most active periods of the season.</p>
+        <p><b>Look for:</b> elite European nights and deep local basketball culture.</p>
       </div>
 
       <div class="card">
         <h3>🏟️ Stadium tours & club experiences</h3>
         <p><b>Why now:</b> calmer than spring or summer.</p>
-        <p><b>What to look for:</b> iconic venues, neighbourhood stadiums and occasional club perks.</p>
+        <p><b>Look for:</b> iconic venues, local stadiums and occasional club perks.</p>
       </div>
 
       <div class="card">
         <h3>🎟️ Specials & one-offs</h3>
         <p><b>Why now:</b> unique local sports moments.</p>
-        <p><b>What to look for:</b> charity matches, exhibitions, anniversaries and community events.</p>
+        <p><b>Look for:</b> charity matches, exhibitions, anniversaries and community events.</p>
       </div>
     </div>
 
     <p class="tiny">
-      This first edition focuses on curation.
+      This first edition focuses on curation.  
       Perks, access and bookings may be added later.
     </p>
   </div>
 
-  <footer class="tiny">
+  <div class="divider"></div>
+
+  <!-- FEEDBACK -->
+  <div class="section">
+    <div class="section-title">What’s missing?</div>
+    <div class="section-subtitle">
+      If something clearly belongs here and isn’t, I’d genuinely love to hear it.
+    </div>
+
+    <p>
+      This is a pilot edition built with travelling fans.  
+      A quick comment or note helps shape the next one.
+    </p>
+
+    <p style="margin-top:14px;">
+      <a href="mailto:alex@kairu.tech" style="color:#38bdf8;font-weight:900;">Send feedback by email</a>
+    </p>
+  </div>
+
+  <div class="divider"></div>
+
+  <footer>
     Contact: <a href="mailto:alex@kairu.tech">alex@kairu.tech</a><br/>
     © <span id="y"></span> GlobalFanID
   </footer>
