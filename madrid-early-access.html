@@ -102,6 +102,108 @@
     .mbody{padding:16px}
     .mactions{display:flex;gap:10px;justify-content:flex-end;padding:14px 16px;border-top:1px solid var(--border);background:rgba(0,0,0,.16);}
     .note{font-size:12px;color:rgba(159,176,208,.95);margin-top:10px}
+    /* Footer */
+.footer{
+  margin-top:22px;
+  padding:22px 0 0;
+}
+.footer-inner{
+  max-width:980px;
+  margin:0 auto;
+  padding:18px 16px 26px;
+  border-top:1px solid var(--border);
+}
+.footer-top{
+  display:grid;
+  grid-template-columns: 1.2fr .8fr;
+  gap:18px;
+  align-items:start;
+}
+@media (max-width:900px){
+  .footer-top{grid-template-columns:1fr}
+}
+.footer-logo{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-weight:900;
+  letter-spacing:.2px;
+}
+.footer-name{font-size:14px;}
+.footer-desc{
+  margin:10px 0 0;
+  color:rgba(234,240,255,.80);
+  font-size:13px;
+  line-height:1.5;
+  max-width:640px;
+}
+
+.footer-perks{
+  margin-top:14px;
+  display:grid;
+  grid-template-columns: 1fr;
+  gap:10px;
+}
+.perk{
+  border:1px solid var(--border);
+  background:rgba(0,0,0,.16);
+  border-radius:14px;
+  padding:10px 12px;
+}
+.perk-title{
+  font-size:12px;
+  font-weight:900;
+  color:rgba(234,240,255,.92);
+  margin-bottom:4px;
+}
+.perk-text{
+  font-size:12px;
+  color:rgba(159,176,208,.95);
+  line-height:1.45;
+}
+
+.footer-links{
+  display:grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap:16px;
+}
+@media (max-width:620px){
+  .footer-links{grid-template-columns:1fr}
+}
+.footer-col-title{
+  font-size:12px;
+  color:rgba(234,240,255,.92);
+  font-weight:900;
+  margin-bottom:8px;
+}
+.footer-link{
+  display:block;
+  text-decoration:none;
+  color:rgba(159,176,208,.98);
+  font-size:13px;
+  margin:7px 0;
+}
+.footer-link:hover{color:rgba(234,240,255,.92)}
+.footer-note{
+  font-size:12px;
+  color:rgba(159,176,208,.80);
+  margin-top:8px;
+}
+
+.footer-bottom{
+  margin-top:16px;
+  padding-top:14px;
+  border-top:1px solid var(--border);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+  flex-wrap:wrap;
+}
+.footer-small{
+  font-size:12px;
+  color:rgba(159,176,208,.92);
+}
   </style>
 </head>
 
@@ -352,5 +454,76 @@
       }, 600);
     });
   </script>
+
+  <!-- PROFESSIONAL FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <span class="dot"></span>
+          <span class="footer-name">GlobalFanID</span>
+        </div>
+        <p class="footer-desc">
+          Fan-curated match trip planning — with member perks (special prices, discounts, and event access) as we onboard partners.
+        </p>
+
+        <div class="footer-perks">
+          <div class="perk">
+            <div class="perk-title">Member perks</div>
+            <div class="perk-text">Special prices & discounts (club tours, museums, official stores, partner venues)</div>
+          </div>
+          <div class="perk">
+            <div class="perk-title">Event access</div>
+            <div class="perk-text">Limited invites & group experiences (meetups, pre-match spots, local specials)</div>
+          </div>
+          <div class="perk">
+            <div class="perk-title">Group-ready</div>
+            <div class="perk-text">Plans designed to share instantly with your WhatsApp group</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-links">
+        <div class="footer-col">
+          <div class="footer-col-title">Contact</div>
+          <a class="footer-link" href="mailto:contact@globalfanid.com">contact@globalfanid.com</a>
+          <div class="footer-note">We reply within 24–48h.</div>
+        </div>
+
+        <div class="footer-col">
+          <div class="footer-col-title">Company</div>
+          <a class="footer-link" href="#" onclick="return false;">About</a>
+          <a class="footer-link" href="#" onclick="return false;">Partners</a>
+          <a class="footer-link" href="#" onclick="return false;">Cities</a>
+        </div>
+
+        <div class="footer-col">
+          <div class="footer-col-title">Legal</div>
+          <a class="footer-link" href="#" onclick="return false;">Privacy</a>
+          <a class="footer-link" href="#" onclick="return false;">Terms</a>
+          <a class="footer-link" href="#" onclick="return false;">Cookies</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="footer-small">
+        © <span id="year"></span> GlobalFanID. All rights reserved.
+      </div>
+      <div class="footer-small">
+        Built for fans, supporters’ groups & groundhoppers.
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // auto year
+  (function(){ 
+    var y = document.getElementById("year");
+    if (y) y.textContent = new Date().getFullYear();
+  })();
+</script>
 </body>
 </html>
