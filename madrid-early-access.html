@@ -1,522 +1,217 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>GlobalFanID · Early Access</title>
-  <meta name="description" content="Curated away-day experiences for fans, supporters groups and groundhoppers. Join early access for free." />
-  <style>
-    :root{
-      --bg:#0b1220;
-      --text:#eaf0ff;
-      --muted:#9fb0d0;
-      --border:rgba(255,255,255,.12);
-      --accent:#4aa3ff;
-      --accent2:#7c5cff;
-      --card:rgba(255,255,255,.06);
-      --shadow:0 14px 40px rgba(0,0,0,.35);
-      --radius:18px;
-    }
-    *{box-sizing:border-box}
-    body{
-      margin:0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
-      background: radial-gradient(1200px 600px at 20% 0%, rgba(74,163,255,.18), transparent 60%),
-                  radial-gradient(1000px 500px at 80% 20%, rgba(124,92,255,.16), transparent 55%),
-                  var(--bg);
-      color:var(--text);
-    }
-    .wrap{max-width:980px;margin:0 auto;padding:26px 16px 60px;}
-    .top{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:22px;}
-    .brand{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:.2px;}
-    .dot{width:10px;height:10px;border-radius:999px;background:linear-gradient(135deg,var(--accent),var(--accent2));}
-    .pill{
-      font-size:12px;padding:6px 10px;border:1px solid var(--border);border-radius:999px;
-      color:rgba(234,240,255,.85);background:rgba(255,255,255,.04);white-space:nowrap;
-    }
-    .hero{
-      display:grid;grid-template-columns:1.15fr .85fr;gap:16px;align-items:stretch;
-    }
-    @media (max-width:900px){.hero{grid-template-columns:1fr}}
-    .card{
-      border:1px solid var(--border);
-      border-radius:var(--radius);
-      background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.04));
-      box-shadow:var(--shadow);
-      overflow:hidden;
-    }
-    .inner{padding:22px;}
-    h1{margin:0 0 10px;font-size:42px;line-height:1.08;letter-spacing:-.8px;}
-    @media (max-width:520px){h1{font-size:32px}}
-    .sub{margin:0 0 16px;color:rgba(234,240,255,.86);font-size:16px;line-height:1.5;}
-    .grid{
-      display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px;
-    }
-    @media (max-width:620px){.grid{grid-template-columns:1fr}}
-    .tile{
-      border:1px solid var(--border);
-      background:rgba(0,0,0,.18);
-      border-radius:14px;
-      padding:10px 12px;
-      font-size:14px;
-      color:rgba(234,240,255,.92);
-    }
-    .tile strong{color:rgba(234,240,255,.98)}
-    .kicker{font-size:12px;color:var(--muted);font-weight:700;letter-spacing:.35px;margin:0 0 8px;}
-    form{display:flex;flex-direction:column;gap:10px;margin-top:10px;}
-    .row{display:flex;gap:10px;}
-    @media (max-width:520px){.row{flex-direction:column}}
-    input, select, textarea{
-      width:100%;padding:12px 12px;border-radius:12px;border:1px solid var(--border);
-      background:rgba(0,0,0,.22);color:var(--text);outline:none;font-size:14px;
-    }
-    input::placeholder, textarea::placeholder{color:rgba(159,176,208,.85)}
-    .btn{
-      cursor:pointer;border:none;border-radius:12px;padding:12px 14px;font-weight:900;font-size:14px;
-      color:#071022;background:linear-gradient(135deg,var(--accent),var(--accent2));
-      box-shadow:0 10px 22px rgba(74,163,255,.18);
-    }
-    .btn-ghost{
-      cursor:pointer;border:1px solid var(--border);border-radius:12px;padding:12px 14px;font-weight:900;font-size:14px;
-      color:var(--text);background:rgba(255,255,255,.06);
-    }
-    .fine{font-size:12px;color:rgba(159,176,208,.95);margin-top:8px;line-height:1.45;}
-    .success{
-      display:none;border:1px solid rgba(74,163,255,.35);background:rgba(74,163,255,.10);
-      border-radius:14px;padding:10px 12px;margin-top:10px;font-size:13px;color:rgba(234,240,255,.95);
-    }
-    .minihelp{font-size:12px;color:rgba(159,176,208,.95);margin-top:-4px;}
-    .divider{height:1px;background:var(--border);margin:12px 0;}
-    /* Modal */
-    .backdrop{
-      position:fixed;inset:0;background:rgba(0,0,0,.55);
-      display:none;align-items:center;justify-content:center;padding:16px;z-index:50;
-    }
-    .modal{
-      width:min(720px,100%);border-radius:18px;border:1px solid var(--border);
-      background:linear-gradient(180deg, rgba(15,26,48,.98), rgba(15,26,48,.92));
-      box-shadow:var(--shadow);overflow:hidden;
-    }
-    .mhead{display:flex;justify-content:space-between;align-items:center;padding:14px 16px;border-bottom:1px solid var(--border);}
-    .mhead strong{font-size:14px}
-    .mbody{padding:16px}
-    .mactions{display:flex;gap:10px;justify-content:flex-end;padding:14px 16px;border-top:1px solid var(--border);background:rgba(0,0,0,.16);}
-    .note{font-size:12px;color:rgba(159,176,208,.95);margin-top:10px}
-    /* Footer */
-.footer{
-  margin-top:22px;
-  padding:22px 0 0;
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>GlobalFanID · Early Access</title>
+<meta name="description" content="Curated away-day experiences for fans, supporters groups and groundhoppers. Join early access for free." />
+
+<style>
+:root{
+--bg:#0b1220;
+--text:#eaf0ff;
+--muted:#9fb0d0;
+--border:rgba(255,255,255,.12);
+--accent:#4aa3ff;
+--accent2:#7c5cff;
+--card:rgba(255,255,255,.06);
+--shadow:0 14px 40px rgba(0,0,0,.35);
+--radius:18px;
 }
-.footer-inner{
-  max-width:980px;
-  margin:0 auto;
-  padding:18px 16px 26px;
-  border-top:1px solid var(--border);
+*{box-sizing:border-box}
+body{
+margin:0;
+font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
+background:
+radial-gradient(1200px 600px at 20% 0%, rgba(74,163,255,.18), transparent 60%),
+radial-gradient(1000px 500px at 80% 20%, rgba(124,92,255,.16), transparent 55%),
+var(--bg);
+color:var(--text);
 }
-.footer-top{
-  display:grid;
-  grid-template-columns: 1.2fr .8fr;
-  gap:18px;
-  align-items:start;
+.wrap{max-width:980px;margin:0 auto;padding:26px 16px 60px;}
+.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:22px;}
+.brand{display:flex;align-items:center;gap:10px;font-weight:800;}
+.dot{width:10px;height:10px;border-radius:999px;background:linear-gradient(135deg,var(--accent),var(--accent2));}
+.pill{font-size:12px;padding:6px 10px;border:1px solid var(--border);border-radius:999px;color:rgba(234,240,255,.85);}
+.hero{display:grid;grid-template-columns:1.15fr .85fr;gap:16px;}
+@media(max-width:900px){.hero{grid-template-columns:1fr}}
+
+.card{
+border:1px solid var(--border);
+border-radius:var(--radius);
+background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.04));
+box-shadow:var(--shadow);
 }
-@media (max-width:900px){
-  .footer-top{grid-template-columns:1fr}
+.inner{padding:22px;}
+h1{margin:0 0 10px;font-size:42px;line-height:1.08;}
+.sub{margin:0 0 16px;color:rgba(234,240,255,.86);font-size:16px;}
+.kicker{font-size:12px;color:var(--muted);font-weight:700;margin:0 0 8px;}
+
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px;}
+@media(max-width:620px){.grid{grid-template-columns:1fr}}
+
+.tile{
+border:1px solid var(--border);
+background:rgba(0,0,0,.18);
+border-radius:14px;
+padding:10px 12px;
+font-size:14px;
+color:rgba(234,240,255,.92);
 }
-.footer-logo{
-  display:flex;
-  align-items:center;
-  gap:10px;
-  font-weight:900;
-  letter-spacing:.2px;
-}
-.footer-name{font-size:14px;}
-.footer-desc{
-  margin:10px 0 0;
-  color:rgba(234,240,255,.80);
-  font-size:13px;
-  line-height:1.5;
-  max-width:640px;
+.tile strong{color:rgba(234,240,255,.98)}
+
+.perks-note{
+margin-top:14px;
+font-size:12px;
+color:rgba(159,176,208,.92);
+line-height:1.5;
 }
 
-.footer-perks{
-  margin-top:14px;
-  display:grid;
-  grid-template-columns: 1fr;
-  gap:10px;
-}
-.perk{
-  border:1px solid var(--border);
-  background:rgba(0,0,0,.16);
-  border-radius:14px;
-  padding:10px 12px;
-}
-.perk-title{
-  font-size:12px;
-  font-weight:900;
-  color:rgba(234,240,255,.92);
-  margin-bottom:4px;
-}
-.perk-text{
-  font-size:12px;
-  color:rgba(159,176,208,.95);
-  line-height:1.45;
+form{display:flex;flex-direction:column;gap:10px;margin-top:10px;}
+.row{display:flex;gap:10px;}
+@media(max-width:520px){.row{flex-direction:column}}
+
+input,select,textarea{
+width:100%;
+padding:12px;
+border-radius:12px;
+border:1px solid var(--border);
+background:rgba(0,0,0,.22);
+color:var(--text);
+font-size:14px;
 }
 
-.footer-links{
-  display:grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap:16px;
+.btn{
+cursor:pointer;
+border:none;
+border-radius:12px;
+padding:12px 14px;
+font-weight:900;
+font-size:14px;
+color:#071022;
+background:linear-gradient(135deg,var(--accent),var(--accent2));
 }
-@media (max-width:620px){
-  .footer-links{grid-template-columns:1fr}
-}
-.footer-col-title{
-  font-size:12px;
-  color:rgba(234,240,255,.92);
-  font-weight:900;
-  margin-bottom:8px;
-}
-.footer-link{
-  display:block;
-  text-decoration:none;
-  color:rgba(159,176,208,.98);
-  font-size:13px;
-  margin:7px 0;
-}
-.footer-link:hover{color:rgba(234,240,255,.92)}
-.footer-note{
-  font-size:12px;
-  color:rgba(159,176,208,.80);
-  margin-top:8px;
+
+.fine{font-size:12px;color:rgba(159,176,208,.95);margin-top:8px;}
+.success{
+display:none;
+border:1px solid rgba(74,163,255,.35);
+background:rgba(74,163,255,.10);
+border-radius:14px;
+padding:10px 12px;
+margin-top:10px;
+font-size:13px;
 }
 
 .footer-clean{
-  margin-top:22px;
-  border-top:1px solid var(--border);
+margin-top:60px;
+border-top:1px solid var(--border);
 }
 .footer-clean-inner{
-  max-width:980px;
-  margin:0 auto;
-  padding:18px 16px 22px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:16px;
-  flex-wrap:wrap;
+max-width:980px;
+margin:0 auto;
+padding:20px 16px;
+display:flex;
+justify-content:space-between;
+flex-wrap:wrap;
+gap:16px;
 }
 .footer-clean-brand{
-  display:flex;
-  align-items:center;
-  gap:10px;
-  font-weight:900;
-  letter-spacing:.2px;
-  font-size:13px;
-  color:rgba(234,240,255,.92);
-}
-.footer-clean-mail{
-  display:inline-block;
-  margin-top:6px;
-  text-decoration:none;
-  font-size:13px;
-  color:rgba(159,176,208,.98);
-}
-.footer-clean-mail:hover{ color:rgba(234,240,255,.92); }
-.footer-clean-right{
-  text-align:right;
-  display:flex;
-  flex-direction:column;
-  gap:4px;
-}
-@media (max-width:620px){
-  .footer-clean-right{ text-align:left; }
+display:flex;
+align-items:center;
+gap:10px;
+font-weight:800;
+font-size:14px;
 }
 .footer-clean-small{
-  font-size:12px;
-  color:rgba(159,176,208,.92);
+font-size:12px;
+color:rgba(159,176,208,.92);
 }
-  </style>
+.footer-clean-mail{
+text-decoration:none;
+font-size:13px;
+color:rgba(159,176,208,.98);
+}
+.footer-clean-mail:hover{color:#fff}
+</style>
 </head>
 
 <body>
-  <div class="wrap">
-    <div class="top">
-      <div class="brand"><span class="dot"></span> GlobalFanID</div>
-      <div class="pill">Early access · Free</div>
-    </div>
+<div class="wrap">
+<div class="top">
+<div class="brand"><span class="dot"></span> GlobalFanID</div>
+<div class="pill">Early access · Free</div>
+</div>
 
-    <div class="hero">
-      <!-- LEFT: value -->
-      <div class="card">
-        <div class="inner">
-          <p class="kicker">FOR FANS · SUPPORTERS GROUPS · GROUNDHOPPERS</p>
-          <h1>Plan your next away day in 5 minutes.
-(Instead of 20 open tabs.)</h1>
-          <p class="sub">
-            Save time planning match trips. Get a curated shortlist + key areas + a simple before/match/after plan you can share with your group.
-          </p>
+<div class="hero">
+<div class="card">
+<div class="inner">
+<p class="kicker">FOR FANS · SUPPORTERS GROUPS · GROUNDHOPPERS</p>
+<h1>Away days, organized.</h1>
+<p class="sub">
+Save time planning match trips. Get curated plans, insider perks and group-ready matchday structures.
+</p>
 
-          <div class="grid">
-            <div class="tile"><strong>Member perks</strong> (special prices as partners onboard)</div>
-            <div class="tile"><strong>Event access</strong> (limited invites & group experiences)</div>
-            <div class="tile"><strong>Verified picks</strong> (fan-curated, no generic lists)</div>
-            <div class="tile"><strong>Group-ready</strong> (easy to forward on WhatsApp)</div>
-          </div>
-        </div>
-      </div>
+<div class="grid">
+<div class="tile"><strong>Member perks</strong> (special prices & discounts)</div>
+<div class="tile"><strong>Event access</strong> (limited invites & group experiences)</div>
+<div class="tile"><strong>Verified picks</strong> (fan-curated, no generic lists)</div>
+<div class="tile"><strong>Group-ready</strong> (easy to forward on WhatsApp)</div>
+</div>
 
-      <!-- RIGHT: capture -->
-      <div class="card">
-        <div class="inner">
-          <h2 style="margin:0 0 6px;font-size:20px;letter-spacing:-.2px;">Join early access</h2>
-          <p style="margin:0 0 12px;color:rgba(234,240,255,.86);font-size:14px;">
-            10 seconds. Then optional 2–3 minute mini-survey.
-          </p>
+<p class="perks-note">
+Member perks roll out city-by-city as official partners onboard.
+</p>
 
-          <!-- EMAIL FORM (posts to Apps Script via iframe) -->
-          <form id="emailForm" method="POST" action="" target="email_iframe" onsubmit="return handleEmailSubmit();">
-            <div class="row">
-              <input id="email" name="email" type="email" placeholder="Your email" required autocomplete="email" />
-              <button id="joinBtn" class="btn" type="submit">Get early access (limited)</button>
-            </div>
+</div>
+</div>
 
-            <select id="fanType" name="fanType">
-              <option value="">What describes you best? (optional)</option>
-              <option value="supporters_club">Supporters’ club / Peña</option>
-              <option value="friends_group">Friends group</option>
-              <option value="groundhopper">Groundhopper</option>
-              <option value="solo_or_couple">Solo / couple</option>
-            </select>
+<div class="card">
+<div class="inner">
+<h2 style="margin:0 0 6px;font-size:20px;">Join early access</h2>
+<p style="margin:0 0 12px;font-size:14px;color:rgba(234,240,255,.86);">
+10 seconds. Then optional 2–3 minute mini-survey.
+</p>
 
-            <input type="hidden" name="type" value="email">
-            <input type="hidden" name="source" value="early-access">
-            <input type="hidden" name="ts" id="emailTs" value="">
+<form>
+<div class="row">
+<input type="email" placeholder="Your email" required>
+<button class="btn">Join early access (free)</button>
+</div>
+<div class="fine">No spam. Only updates + early access invites.</div>
+</form>
 
-            <div id="emailSuccess" class="success">
-              ✅ You’re in. Want to help shape the next cities? Take the mini-survey (optional).
-            </div>
-
-            <div class="minihelp">Optional — helps us pick the next cities.</div>
-
-            <div class="row" style="margin-top:10px">
-              <button id="surveyBtn" class="btn-ghost" type="button" disabled>Open mini-survey</button>
-              <button id="skipBtn" class="btn-ghost" type="button" disabled>Not now</button>
-            </div>
-
-            <div class="fine">No spam. Only updates + early access invites.</div>
-          </form>
-
-          <iframe name="email_iframe" style="display:none;"></iframe>
-
-          <div class="divider"></div>
-
-          <div class="fine">
-            If you run a supporters group: we’re collecting demand signals (cities, group sizes, travel frequency) to share with clubs.
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- MINI SURVEY MODAL -->
-  <div id="backdrop" class="backdrop" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-    <div class="modal">
-      <div class="mhead">
-        <strong id="modalTitle">Mini-survey (2–3 minutes)</strong>
-        <button class="btn-ghost" type="button" id="closeBtn" style="padding:8px 10px;">Close</button>
-      </div>
-
-      <div class="mbody">
-        <form id="surveyForm" method="POST" action="" target="survey_iframe">
-          <input type="hidden" name="type" value="survey">
-          <input type="hidden" name="email" id="surveyEmail" value="">
-          <input type="hidden" name="source" value="early-access">
-          <input type="hidden" name="ts" id="surveyTs" value="">
-
-          <div class="row">
-            <select name="groupSize" id="groupSize" required>
-              <option value="" disabled selected>Group size?</option>
-              <option value="1-2">1–2</option>
-              <option value="2-4">2–4 (small trip)</option>
-              <option value="5-10">5–10</option>
-              <option value="11-25">11–25</option>
-              <option value="26-50">26–50</option>
-              <option value="50plus">More than 50</option>
-            </select>
-
-            <select name="travelFrequency" id="travelFrequency" required>
-              <option value="" disabled selected>Travel frequency?</option>
-              <option value="1-2y">1–2 times/year</option>
-              <option value="3-5y">3–5 times/year</option>
-              <option value="6plus">6+ times/year</option>
-              <option value="only_big_events">Only big events</option>
-            </select>
-          </div>
-
-          <div style="height:10px"></div>
-
-          <select name="priority" id="priority" required>
-            <option value="" disabled selected>What would be most useful to share?</option>
-            <option value="shortlist">Shortlist (3–5 plans)</option>
-            <option value="map">Key areas map</option>
-            <option value="route">Before/Match/After plan</option>
-            <option value="tickets">Ticketing / access info</option>
-          </select>
-
-          <div style="height:10px"></div>
-
-          <input name="nextCity" id="nextCity" type="text" placeholder="Next city you’re traveling to (optional)" />
-
-          <div style="height:10px"></div>
-
-          <textarea name="mustHave" id="mustHave" rows="4" placeholder="One must-have feature for you (required)" required></textarea>
-
-          <button type="submit" id="hiddenSubmit" style="display:none;"></button>
-
-          <div class="note">Thanks — this helps us prioritize cities and build proof of demand for clubs.</div>
-        </form>
-
-        <iframe name="survey_iframe" style="display:none;"></iframe>
-
-        <div id="surveyOk" class="success" style="display:none;margin-top:12px;">
-          ✅ Submitted. Thank you!
-        </div>
-      </div>
-
-      <div class="mactions">
-        <button class="btn-ghost" type="button" id="laterBtn">Save for later</button>
-        <button class="btn" type="button" id="submitBtn">Submit</button>
-      </div>
-    </div>
-  </div>
-
-  <script>
-    // 1) Paste your Apps Script Web App URL here (must end with /exec)
-    const APPS_SCRIPT_URL = "PEGA_AQUI_TU_URL_EXEC";
-
-    // Wire form actions
-    const emailForm = document.getElementById("emailForm");
-    const surveyForm = document.getElementById("surveyForm");
-    emailForm.action = APPS_SCRIPT_URL;
-    surveyForm.action = APPS_SCRIPT_URL;
-
-    const emailInput = document.getElementById("email");
-    const joinBtn = document.getElementById("joinBtn");
-    const emailSuccess = document.getElementById("emailSuccess");
-    const surveyBtn = document.getElementById("surveyBtn");
-    const skipBtn = document.getElementById("skipBtn");
-    const emailTs = document.getElementById("emailTs");
-
-    const backdrop = document.getElementById("backdrop");
-    const closeBtn = document.getElementById("closeBtn");
-    const laterBtn = document.getElementById("laterBtn");
-    const submitBtn = document.getElementById("submitBtn");
-    const hiddenSubmit = document.getElementById("hiddenSubmit");
-
-    const surveyEmail = document.getElementById("surveyEmail");
-    const surveyTs = document.getElementById("surveyTs");
-    const surveyOk = document.getElementById("surveyOk");
-
-    function isValidEmail(v){
-      return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(String(v).trim());
-    }
-    function openModal(){ backdrop.style.display = "flex"; document.body.style.overflow="hidden"; }
-    function closeModal(){ backdrop.style.display = "none"; document.body.style.overflow=""; }
-
-    function handleEmailSubmit(){
-      const email = emailInput.value.trim();
-      if(!isValidEmail(email)){ alert("Please enter a valid email."); return false; }
-      emailTs.value = new Date().toISOString();
-
-      // optimistic UI
-      joinBtn.disabled = true;
-      joinBtn.textContent = "Saving…";
-      setTimeout(() => {
-        joinBtn.textContent = "Saved ✓";
-        emailSuccess.style.display = "block";
-        surveyBtn.disabled = false;
-        skipBtn.disabled = false;
-        surveyEmail.value = email;
-      }, 450);
-
-      return true; // allow POST to iframe
-    }
-
-    surveyBtn.addEventListener("click", () => {
-      if(!surveyEmail.value) return;
-      openModal();
-    });
-
-    skipBtn.addEventListener("click", () => {
-      skipBtn.textContent = "All good ✓";
-      setTimeout(()=>{ skipBtn.textContent = "Not now"; }, 1200);
-    });
-
-    closeBtn.addEventListener("click", closeModal);
-    laterBtn.addEventListener("click", closeModal);
-    backdrop.addEventListener("click", (e) => { if(e.target===backdrop) closeModal(); });
-
-    submitBtn.addEventListener("click", () => {
-      const required = ["groupSize","travelFrequency","priority","mustHave"];
-      for(const id of required){
-        const el = document.getElementById(id);
-        if(!el || !String(el.value||"").trim()){ alert("Please complete the required fields."); return; }
-      }
-      surveyTs.value = new Date().toISOString();
-
-      submitBtn.disabled = true;
-      submitBtn.textContent = "Submitting…";
-      hiddenSubmit.click();
-
-      setTimeout(() => {
-        surveyOk.style.display = "block";
-        submitBtn.textContent = "Submitted ✓";
-        setTimeout(() => {
-          closeModal();
-          surveyOk.style.display = "none";
-          submitBtn.disabled = false;
-          submitBtn.textContent = "Submit";
-          // reset inputs (keep email)
-          document.getElementById("groupSize").value="";
-          document.getElementById("travelFrequency").value="";
-          document.getElementById("priority").value="";
-          document.getElementById("nextCity").value="";
-          document.getElementById("mustHave").value="";
-        }, 900);
-      }, 600);
-    });
-  </script>
+</div>
+</div>
+</div>
+</div>
 
 <footer class="footer-clean">
-  <div class="footer-clean-inner">
-    <div class="footer-clean-left">
-      <div class="footer-clean-brand">
-        <span class="dot"></span>
-        <span>GlobalFanID</span>
-      </div>
-      <div class="footer-clean-small">Built for fans, supporters’ groups & groundhoppers.</div>
-    </div>
+<div class="footer-clean-inner">
+<div>
+<div class="footer-clean-brand">
+<span class="dot"></span>
+<span>GlobalFanID</span>
+</div>
+<div class="footer-clean-small">
+Built for fans, supporters’ groups & groundhoppers.
+</div>
+</div>
 
-    <div class="footer-clean-right">
-      <div class="footer-clean-small">© <span id="year"></span> GlobalFanID. All rights reserved.</div>
-            <a class="footer-clean-mail" href="mailto:alex@kairu.tech">alex@kairu.tech</a>
-
-    </div>
-  </div>
+<div>
+<div class="footer-clean-small">
+© <span id="year"></span> GlobalFanID. All rights reserved.
+</div>
+<a class="footer-clean-mail" href="mailto:contact@globalfanid.com">
+contact@globalfanid.com
+</a>
+</div>
+</div>
 </footer>
 
 <script>
-  (function(){
-    var y = document.getElementById("year");
-    if (y) y.textContent = new Date().getFullYear();
-  })();
+document.getElementById("year").textContent = new Date().getFullYear();
 </script>
 
-<script>
-  // auto year
-  (function(){ 
-    var y = document.getElementById("year");
-    if (y) y.textContent = new Date().getFullYear();
-  })();
-</script>
 </body>
 </html>
