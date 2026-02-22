@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>GlobalFanID · Madrid (Q1 2026) — Early Access</title>
+  <title>GlobalFanID · Early Access</title>
   <meta name="description" content="Curated away-day experiences for football fans. Join early access and help shape GlobalFanID." />
 
   <style>
@@ -126,6 +126,7 @@
       font-size:13px;
       margin:0 0 14px;
     }
+
     form{
       display:flex;
       flex-direction:column;
@@ -272,7 +273,7 @@
       <div class="brand">
         <span style="display:inline-block;width:10px;height:10px;border-radius:999px;background:linear-gradient(135deg,var(--accent),var(--accent2));"></span>
         <span>GlobalFanID</span>
-        <span class="badge">Madrid · Q1 2026</span>
+        <span class="badge">Pilot · Q1 2026</span>
       </div>
       <div class="badge">Fan-curated · Early access</div>
     </div>
@@ -312,20 +313,30 @@
             Takes <strong>10 seconds</strong>. Then (optional) a <strong>2–3 minute</strong> mini-survey to prioritize cities & features.
           </p>
 
-          <!-- EMAIL FIRST -->
-          <form id="emailForm">
+          <!-- ✅ EMAIL FIRST (posts to Apps Script via normal form) -->
+          <form id="emailForm"
+                method="POST"
+                action=""
+                target="email_iframe"
+                onsubmit="return handleEmailSubmit();">
+
             <div class="row">
-              <input id="email" type="email" placeholder="Your email" required autocomplete="email" />
+              <input id="email" name="email" type="email" placeholder="Your email" required autocomplete="email" />
               <button id="joinBtn" class="btn" type="submit">Get early access</button>
             </div>
 
-            <select id="fanType" aria-label="What describes you best?">
+            <select id="fanType" name="fanType" aria-label="What describes you best?">
               <option value="">What describes you best? (optional)</option>
               <option value="official_supporters_club">Official supporters’ club member</option>
               <option value="friends_group">Group of friends traveling for matches</option>
               <option value="solo_or_couple">Solo / couple</option>
               <option value="other">Other</option>
             </select>
+
+            <!-- Hidden fields -->
+            <input type="hidden" name="type" value="email">
+            <input type="hidden" name="source" value="pilot_q1_2026">
+            <input type="hidden" name="ts" id="emailTs" value="">
 
             <div class="fineprint">
               No spam. We’ll only use this to share updates + ask for input.
@@ -346,6 +357,8 @@
               <button id="skipBtn" class="btn-ghost" type="button" disabled>Not now</button>
             </div>
           </form>
+
+          <iframe name="email_iframe" style="display:none;"></iframe>
         </div>
 
         <div class="card-inner" style="border-top:1px solid var(--border); background:rgba(0,0,0,.14)">
@@ -354,7 +367,7 @@
             <div>
               <div style="font-weight:800; margin-bottom:4px;">Pilot scope</div>
               <div class="small" style="margin:0">
-                Starting with curated city “experiences” (like Madrid) and expanding based on what fans request most.
+                Starting with curated city “experiences” and expanding based on what fans request most.
               </div>
             </div>
           </div>
@@ -362,7 +375,7 @@
       </div>
     </div>
 
-    <!-- Secondary content (short + useful) -->
+    <!-- Secondary content -->
     <div class="section">
       <div class="card">
         <div class="card-inner">
@@ -393,7 +406,7 @@
     </div>
   </div>
 
-  <!-- MINI SURVEY MODAL (2–3 mins) -->
+  <!-- ✅ MINI SURVEY MODAL (posts to Apps Script via normal form) -->
   <div id="modalBackdrop" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
     <div class="modal">
       <div class="modal-head">
@@ -402,11 +415,20 @@
       </div>
 
       <div class="modal-body">
-        <form id="surveyForm">
-          <input type="hidden" id="surveyEmail" />
+        <form id="surveyForm"
+              method="POST"
+              action=""
+              target="survey_iframe"
+              onsubmit="return handleSurveySubmit();">
+
+          <!-- Carried over from email -->
+          <input type="hidden" name="type" value="survey">
+          <input type="hidden" name="email" id="surveyEmail" value="">
+          <input type="hidden" name="source" value="pilot_q1_2026">
+          <input type="hidden" name="ts" id="surveyTs" value="">
 
           <div class="row">
-            <select id="groupSize" required>
+            <select id="groupSize" name="groupSize" required>
               <option value="" disabled selected>When you travel, how many are you usually?</option>
               <option value="1-2">1–2</option>
               <option value="2-4">2–4 (small trip)</option>
@@ -416,7 +438,7 @@
               <option value="50plus">More than 50</option>
             </select>
 
-            <select id="travelFrequency" required>
+            <select id="travelFrequency" name="travelFrequency" required>
               <option value="" disabled selected>How often do you travel for sport?</option>
               <option value="1-2y">1–2 times/year</option>
               <option value="3-5y">3–5 times/year</option>
@@ -428,7 +450,7 @@
           <div style="height:10px"></div>
 
           <label class="small" style="display:block; margin-bottom:6px">What would be most useful to share in a group chat?</label>
-          <select id="whatsappOneThing" required>
+          <select id="whatsappOneThing" name="whatsappOneThing" required>
             <option value="" disabled selected>Select one</option>
             <option value="shortlist">A shortlist with 3–5 clear plans</option>
             <option value="map">A map with key areas</option>
@@ -439,17 +461,26 @@
           <div style="height:10px"></div>
 
           <label class="small" style="display:block; margin-bottom:6px">Which city are you traveling to in the next 3 months (if any)?</label>
-          <input id="nextCity" type="text" placeholder='e.g., London, Milan, Munich (optional)' />
+          <input id="nextCity" name="nextCity" type="text" placeholder="e.g., London, Milan, Munich (optional)" />
 
           <div style="height:10px"></div>
 
           <label class="small" style="display:block; margin-bottom:6px">One thing GlobalFanID must have to be truly useful:</label>
-          <textarea id="mustHave" rows="4" placeholder="What would make you say: ‘I’d actually use this’?" required></textarea>
+          <textarea id="mustHave" name="mustHave" rows="4" placeholder="What would make you say: ‘I’d actually use this’?" required></textarea>
 
           <div class="note">
             We’ll share aggregated insights back with the community. No selling — just building with fans.
           </div>
+
+          <!-- Hidden submit button so we can trigger from footer -->
+          <button type="submit" id="hiddenSurveySubmit" style="display:none;"></button>
         </form>
+
+        <iframe name="survey_iframe" style="display:none;"></iframe>
+
+        <div id="surveySuccess" class="success" style="margin-top:14px; display:none;">
+          ✅ Survey submitted. Thank you!
+        </div>
       </div>
 
       <div class="modal-actions">
@@ -460,22 +491,16 @@
   </div>
 
   <script>
-    /**
-     * ✅ WHAT YOU NEED TO EDIT:
-     * 1) Replace EMAIL_ENDPOINT with your endpoint to store emails
-     * 2) Replace SURVEY_ENDPOINT with your endpoint to store survey responses
-     *
-     * Quick options:
-     * - If you already use Google Forms, you can POST there via Apps Script web app.
-     * - If you use Netlify Forms: easiest is to use a regular <form netlify> (different setup).
-     * - If you use Airtable/Sheet: use a simple webhook (Make/Zapier/Pipedream).
-     */
-    const EMAIL_ENDPOINT = "https://script.google.com/macros/s/AKfycbxC9lGUfqJ1l8p_wYkKs_moxSSVFki4yN_GDduwD3TNu0aU253L3L677JO7SP0T8A_pvA/exec"; 
-    const SURVEY_ENDPOINT = ""; // e.g. "https://YOUR-WEBHOOK-URL/survey"
+    // ✅ 1) Paste your Apps Script Web App URL here (must end with /exec)
+    const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxC9lGUfqJ1l8p_wYkKs_moxSSVFki4yN_GDduwD3TNu0aU253L3L677JO7SP0T8A_pvA/exec";
 
+    // Wire both forms to the same Apps Script URL
     const emailForm = document.getElementById("emailForm");
+    const surveyForm = document.getElementById("surveyForm");
+    emailForm.action = APPS_SCRIPT_URL;
+    surveyForm.action = APPS_SCRIPT_URL;
+
     const emailInput = document.getElementById("email");
-    const fanType = document.getElementById("fanType");
     const joinBtn = document.getElementById("joinBtn");
     const emailSuccess = document.getElementById("emailSuccess");
     const surveyBtn = document.getElementById("surveyBtn");
@@ -485,13 +510,12 @@
     const closeModalBtn = document.getElementById("closeModalBtn");
     const saveLaterBtn = document.getElementById("saveLaterBtn");
     const submitSurveyBtn = document.getElementById("submitSurveyBtn");
+    const hiddenSurveySubmit = document.getElementById("hiddenSurveySubmit");
 
     const surveyEmail = document.getElementById("surveyEmail");
-    const groupSize = document.getElementById("groupSize");
-    const travelFrequency = document.getElementById("travelFrequency");
-    const whatsappOneThing = document.getElementById("whatsappOneThing");
-    const nextCity = document.getElementById("nextCity");
-    const mustHave = document.getElementById("mustHave");
+    const emailTs = document.getElementById("emailTs");
+    const surveyTs = document.getElementById("surveyTs");
+    const surveySuccess = document.getElementById("surveySuccess");
 
     function openModal(){
       modalBackdrop.style.display = "flex";
@@ -506,46 +530,31 @@
       return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(String(v).trim());
     }
 
-    async function postJSON(url, data){
-      if(!url) return { ok: true, skipped: true }; // allows running without endpoints while you test UI
-      const res = await fetch(url, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data)
-      });
-      return { ok: res.ok, status: res.status, text: await res.text().catch(()=> "") };
-    }
-
-    emailForm.addEventListener("submit", async (e) => {
-      e.preventDefault();
+    // Called on email form submit. We let the form POST to the hidden iframe.
+    function handleEmailSubmit(){
       const email = emailInput.value.trim();
-      if(!isValidEmail(email)) { alert("Please enter a valid email."); return; }
+      if(!isValidEmail(email)){
+        alert("Please enter a valid email.");
+        return false;
+      }
 
+      // Set timestamp
+      emailTs.value = new Date().toISOString();
+
+      // UX changes immediately (even though the POST is async in iframe)
       joinBtn.disabled = true;
       joinBtn.textContent = "Saving…";
 
-      try{
-        const payload = {
-          email,
-          fanType: fanType.value || null,
-          source: "madrid_q1_2026",
-          ts: new Date().toISOString()
-        };
-        const r = await postJSON(EMAIL_ENDPOINT, payload);
-        if(!r.ok) throw new Error("Failed to save");
-
+      setTimeout(() => {
+        joinBtn.textContent = "Saved ✓";
         emailSuccess.style.display = "block";
         surveyBtn.disabled = false;
         skipBtn.disabled = false;
-        surveyEmail.value = email;
+        surveyEmail.value = email; // carry into survey
+      }, 450);
 
-        joinBtn.textContent = "Saved ✓";
-      }catch(err){
-        joinBtn.disabled = false;
-        joinBtn.textContent = "Get early access";
-        alert("Sorry — something went wrong. Please try again.");
-      }
-    });
+      return true; // allow the form submission
+    }
 
     surveyBtn.addEventListener("click", () => {
       if(!surveyEmail.value) return;
@@ -553,7 +562,6 @@
     });
 
     skipBtn.addEventListener("click", () => {
-      // simple acknowledgment
       skipBtn.textContent = "All good ✓";
       setTimeout(()=>{ skipBtn.textContent = "Not now"; }, 1200);
     });
@@ -564,50 +572,46 @@
       if(e.target === modalBackdrop) closeModal();
     });
 
-    submitSurveyBtn.addEventListener("click", async () => {
-      if(!surveyEmail.value) { alert("Missing email."); return; }
-
-      // Basic validation
-      if(!groupSize.value || !travelFrequency.value || !whatsappOneThing.value || !mustHave.value.trim()){
-        alert("Please complete the required fields.");
-        return;
+    submitSurveyBtn.addEventListener("click", () => {
+      // Basic validation before submitting
+      const required = ["groupSize","travelFrequency","whatsappOneThing","mustHave"];
+      for(const id of required){
+        const el = document.getElementById(id);
+        if(!el || !String(el.value || "").trim()){
+          alert("Please complete the required fields.");
+          return;
+        }
       }
 
+      surveyTs.value = new Date().toISOString();
       submitSurveyBtn.disabled = true;
       submitSurveyBtn.textContent = "Submitting…";
 
-      try{
-        const payload = {
-          email: surveyEmail.value,
-          groupSize: groupSize.value,
-          travelFrequency: travelFrequency.value,
-          whatsappOneThing: whatsappOneThing.value,
-          nextCity: nextCity.value.trim() || null,
-          mustHave: mustHave.value.trim(),
-          source: "madrid_q1_2026",
-          ts: new Date().toISOString()
-        };
-        const r = await postJSON(SURVEY_ENDPOINT, payload);
-        if(!r.ok) throw new Error("Failed to submit survey");
+      // Submit form to hidden iframe
+      hiddenSurveySubmit.click();
 
+      setTimeout(() => {
         submitSurveyBtn.textContent = "Submitted ✓";
+        surveySuccess.style.display = "block";
         setTimeout(() => {
           closeModal();
-          // reset modal fields (keep email)
-          groupSize.value = "";
-          travelFrequency.value = "";
-          whatsappOneThing.value = "";
-          nextCity.value = "";
-          mustHave.value = "";
+          // Reset modal fields (keep email)
+          document.getElementById("groupSize").value = "";
+          document.getElementById("travelFrequency").value = "";
+          document.getElementById("whatsappOneThing").value = "";
+          document.getElementById("nextCity").value = "";
+          document.getElementById("mustHave").value = "";
+          surveySuccess.style.display = "none";
           submitSurveyBtn.disabled = false;
           submitSurveyBtn.textContent = "Submit mini-survey";
-        }, 700);
-      }catch(err){
-        submitSurveyBtn.disabled = false;
-        submitSurveyBtn.textContent = "Submit mini-survey";
-        alert("Sorry — could not submit. Please try again.");
-      }
+        }, 900);
+      }, 600);
     });
+
+    function handleSurveySubmit(){
+      // we already validated in button handler, allow submit
+      return true;
+    }
   </script>
 </body>
 </html>
