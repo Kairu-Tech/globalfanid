@@ -1,0 +1,613 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>GlobalFanID · Madrid (Q1 2026) — Early Access</title>
+  <meta name="description" content="Curated away-day experiences for football fans. Join early access and help shape GlobalFanID." />
+
+  <style>
+    :root{
+      --bg:#0b1220;
+      --card:#0f1a30;
+      --muted:#9fb0d0;
+      --text:#eaf0ff;
+      --accent:#4aa3ff;
+      --accent2:#7c5cff;
+      --border:rgba(255,255,255,.10);
+      --shadow: 0 14px 40px rgba(0,0,0,.35);
+      --radius:18px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      background: radial-gradient(1200px 600px at 20% 0%, rgba(74,163,255,.18), transparent 60%),
+                  radial-gradient(1000px 500px at 80% 20%, rgba(124,92,255,.16), transparent 55%),
+                  var(--bg);
+      color:var(--text);
+      line-height:1.45;
+    }
+    a{color:inherit}
+    .wrap{
+      max-width:1100px;
+      margin:0 auto;
+      padding:28px 18px 70px;
+    }
+    .topbar{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      margin-bottom:26px;
+    }
+    .brand{
+      display:flex; align-items:center; gap:10px;
+      font-weight:700; letter-spacing:.2px;
+    }
+    .badge{
+      font-size:12px;
+      padding:6px 10px;
+      border:1px solid var(--border);
+      border-radius:999px;
+      color:var(--muted);
+      background:rgba(255,255,255,.04);
+    }
+    .hero{
+      display:grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap:18px;
+      align-items:stretch;
+    }
+    @media (max-width: 920px){
+      .hero{grid-template-columns:1fr}
+    }
+    .card{
+      background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.03));
+      border:1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+    .card-inner{ padding:22px; }
+    .kicker{
+      color:var(--muted);
+      font-weight:600;
+      letter-spacing:.3px;
+      font-size:13px;
+      margin:0 0 10px;
+    }
+    h1{
+      margin:0 0 12px;
+      font-size:40px;
+      line-height:1.12;
+      letter-spacing:-.6px;
+    }
+    @media (max-width: 520px){
+      h1{font-size:32px}
+    }
+    .sub{
+      margin:0 0 18px;
+      color:rgba(234,240,255,.88);
+      font-size:16px;
+    }
+    .bullets{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:10px 12px;
+      margin:16px 0 0;
+      padding:0;
+      list-style:none;
+    }
+    @media (max-width: 620px){
+      .bullets{grid-template-columns:1fr}
+    }
+    .bullets li{
+      border:1px solid var(--border);
+      background:rgba(0,0,0,.18);
+      border-radius:14px;
+      padding:10px 12px;
+      color:rgba(234,240,255,.92);
+      font-size:14px;
+    }
+
+    .cta{
+      display:flex;
+      flex-direction:column;
+      height:100%;
+    }
+    .cta h2{
+      margin:0 0 8px;
+      font-size:20px;
+      letter-spacing:-.2px;
+    }
+    .small{
+      color:var(--muted);
+      font-size:13px;
+      margin:0 0 14px;
+    }
+    form{
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+      margin-top:10px;
+    }
+    .row{
+      display:flex; gap:10px; align-items:stretch;
+    }
+    @media (max-width: 520px){
+      .row{flex-direction:column}
+    }
+    input, select, textarea{
+      width:100%;
+      padding:12px 12px;
+      border-radius:12px;
+      border:1px solid var(--border);
+      background:rgba(0,0,0,.22);
+      color:var(--text);
+      outline:none;
+      font-size:14px;
+    }
+    input::placeholder, textarea::placeholder{color:rgba(159,176,208,.8)}
+    .btn{
+      cursor:pointer;
+      border:none;
+      border-radius:12px;
+      padding:12px 14px;
+      font-weight:700;
+      font-size:14px;
+      color:#071022;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      box-shadow: 0 10px 22px rgba(74,163,255,.18);
+    }
+    .btn:disabled{opacity:.55; cursor:not-allowed}
+    .btn-ghost{
+      cursor:pointer;
+      border:1px solid var(--border);
+      border-radius:12px;
+      padding:12px 14px;
+      font-weight:700;
+      font-size:14px;
+      color:var(--text);
+      background:rgba(255,255,255,.06);
+    }
+    .fineprint{
+      margin-top:12px;
+      color:rgba(159,176,208,.95);
+      font-size:12px;
+    }
+    .trust{
+      display:flex; gap:10px; flex-wrap:wrap;
+      margin-top:14px;
+    }
+    .trust .chip{
+      font-size:12px;
+      color:rgba(234,240,255,.88);
+      border:1px solid var(--border);
+      background:rgba(0,0,0,.16);
+      padding:7px 10px;
+      border-radius:999px;
+    }
+
+    .section{
+      margin-top:18px;
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:18px;
+    }
+    @media (max-width: 920px){
+      .section{grid-template-columns:1fr}
+    }
+    .section h3{
+      margin:0 0 8px;
+      font-size:18px;
+      letter-spacing:-.2px;
+    }
+    .section p{margin:0; color:rgba(234,240,255,.88); font-size:14px}
+    .divider{height:1px; background:var(--border); margin:14px 0}
+    .list{
+      margin:10px 0 0;
+      padding:0 0 0 18px;
+      color:rgba(234,240,255,.9);
+      font-size:14px;
+    }
+
+    /* Modal */
+    .modal-backdrop{
+      position:fixed; inset:0;
+      background:rgba(0,0,0,.55);
+      display:none;
+      align-items:center;
+      justify-content:center;
+      padding:18px;
+      z-index:50;
+    }
+    .modal{
+      width:min(740px, 100%);
+      border-radius:18px;
+      border:1px solid var(--border);
+      background: linear-gradient(180deg, rgba(15,26,48,.98), rgba(15,26,48,.92));
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+    .modal-head{
+      padding:16px 18px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      border-bottom:1px solid var(--border);
+    }
+    .modal-head strong{font-size:14px}
+    .modal-body{padding:18px}
+    .modal-actions{
+      display:flex;
+      gap:10px;
+      justify-content:flex-end;
+      padding:16px 18px;
+      border-top:1px solid var(--border);
+      background:rgba(0,0,0,.16);
+    }
+    .note{
+      font-size:12px;
+      color:rgba(159,176,208,.95);
+      margin-top:10px;
+    }
+
+    .success{
+      display:none;
+      border:1px solid rgba(74,163,255,.35);
+      background:rgba(74,163,255,.10);
+      border-radius:14px;
+      padding:12px 12px;
+      margin-top:12px;
+      color:rgba(234,240,255,.95);
+      font-size:14px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <div class="topbar">
+      <div class="brand">
+        <span style="display:inline-block;width:10px;height:10px;border-radius:999px;background:linear-gradient(135deg,var(--accent),var(--accent2));"></span>
+        <span>GlobalFanID</span>
+        <span class="badge">Madrid · Q1 2026</span>
+      </div>
+      <div class="badge">Fan-curated · Early access</div>
+    </div>
+
+    <div class="hero">
+      <!-- Left: Value -->
+      <div class="card">
+        <div class="card-inner">
+          <p class="kicker">Curated away-day experiences (not a generic travel guide)</p>
+          <h1>Stop searching 20 tabs.<br/>Get a matchday plan you can send to the group.</h1>
+          <p class="sub">
+            GlobalFanID organizes the best sports experiences in a city — stadium tours, museums, local fan spots,
+            and practical “before / match / after” structure — so you can plan faster.
+          </p>
+
+          <ul class="bullets">
+            <li><strong>Shortlists</strong> that save time (3–5 picks)</li>
+            <li><strong>Key areas map</strong> (where to stay / meet / avoid)</li>
+            <li><strong>Matchday mini-route</strong> (before / match / after)</li>
+            <li><strong>Group logistics</strong> made simple (bigger trips)</li>
+          </ul>
+
+          <div class="divider"></div>
+
+          <p class="sub" style="margin:0">
+            We’re building this with fans and supporters’ groups from day one.
+            Join early access and help shape what we build next.
+          </p>
+        </div>
+      </div>
+
+      <!-- Right: CTA -->
+      <div class="card cta">
+        <div class="card-inner" style="flex:1">
+          <h2>Join early access</h2>
+          <p class="small">
+            Takes <strong>10 seconds</strong>. Then (optional) a <strong>2–3 minute</strong> mini-survey to prioritize cities & features.
+          </p>
+
+          <!-- EMAIL FIRST -->
+          <form id="emailForm">
+            <div class="row">
+              <input id="email" type="email" placeholder="Your email" required autocomplete="email" />
+              <button id="joinBtn" class="btn" type="submit">Get early access</button>
+            </div>
+
+            <select id="fanType" aria-label="What describes you best?">
+              <option value="">What describes you best? (optional)</option>
+              <option value="official_supporters_club">Official supporters’ club member</option>
+              <option value="friends_group">Group of friends traveling for matches</option>
+              <option value="solo_or_couple">Solo / couple</option>
+              <option value="other">Other</option>
+            </select>
+
+            <div class="fineprint">
+              No spam. We’ll only use this to share updates + ask for input.
+            </div>
+
+            <div class="trust">
+              <span class="chip">✅ Fan-first</span>
+              <span class="chip">✅ Practical</span>
+              <span class="chip">✅ Built with community</span>
+            </div>
+
+            <div id="emailSuccess" class="success">
+              ✅ You’re on the list. Want to help shape it? Take the 2–3 minute mini-survey now.
+            </div>
+
+            <div class="row" style="margin-top:10px">
+              <button id="surveyBtn" class="btn-ghost" type="button" disabled>Open mini-survey (optional)</button>
+              <button id="skipBtn" class="btn-ghost" type="button" disabled>Not now</button>
+            </div>
+          </form>
+        </div>
+
+        <div class="card-inner" style="border-top:1px solid var(--border); background:rgba(0,0,0,.14)">
+          <div style="display:flex; gap:12px; align-items:flex-start;">
+            <div style="min-width:36px; height:36px; border-radius:12px; background:rgba(255,255,255,.06); display:flex; align-items:center; justify-content:center; border:1px solid var(--border);">🏟️</div>
+            <div>
+              <div style="font-weight:800; margin-bottom:4px;">Pilot scope</div>
+              <div class="small" style="margin:0">
+                Starting with curated city “experiences” (like Madrid) and expanding based on what fans request most.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Secondary content (short + useful) -->
+    <div class="section">
+      <div class="card">
+        <div class="card-inner">
+          <h3>What you’ll get</h3>
+          <p>
+            A clean, fan-curated view of what’s worth doing around sport in a city — focused on real usefulness for match trips.
+          </p>
+          <ul class="list">
+            <li>3–5 “worth it” sports picks</li>
+            <li>Matchday mini-route you can share on WhatsApp</li>
+            <li>Areas to stay / meet + practical tips</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-inner">
+          <h3>What it isn’t</h3>
+          <p>
+            Not another long travel guide, not generic “Top 10” lists, and not SEO content. We only include things fans actually pick.
+          </p>
+          <div class="divider"></div>
+          <p style="color:rgba(234,240,255,.92); font-size:14px; margin:0">
+            If you’re a club or venue: we’ll be able to show real demand signals (city interest, fan segments, repeat travel patterns).
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MINI SURVEY MODAL (2–3 mins) -->
+  <div id="modalBackdrop" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal">
+      <div class="modal-head">
+        <strong id="modalTitle">Quick mini-survey (2–3 minutes)</strong>
+        <button class="btn-ghost" type="button" id="closeModalBtn" style="padding:8px 10px;">Close</button>
+      </div>
+
+      <div class="modal-body">
+        <form id="surveyForm">
+          <input type="hidden" id="surveyEmail" />
+
+          <div class="row">
+            <select id="groupSize" required>
+              <option value="" disabled selected>When you travel, how many are you usually?</option>
+              <option value="1-2">1–2</option>
+              <option value="2-4">2–4 (small trip)</option>
+              <option value="5-10">5–10</option>
+              <option value="11-25">11–25</option>
+              <option value="26-50">26–50</option>
+              <option value="50plus">More than 50</option>
+            </select>
+
+            <select id="travelFrequency" required>
+              <option value="" disabled selected>How often do you travel for sport?</option>
+              <option value="1-2y">1–2 times/year</option>
+              <option value="3-5y">3–5 times/year</option>
+              <option value="6plus">6+ times/year</option>
+              <option value="only_big_events">Only for big events</option>
+            </select>
+          </div>
+
+          <div style="height:10px"></div>
+
+          <label class="small" style="display:block; margin-bottom:6px">What would be most useful to share in a group chat?</label>
+          <select id="whatsappOneThing" required>
+            <option value="" disabled selected>Select one</option>
+            <option value="shortlist">A shortlist with 3–5 clear plans</option>
+            <option value="map">A map with key areas</option>
+            <option value="mini_route">A mini-route (before / match / after)</option>
+            <option value="other">Something else</option>
+          </select>
+
+          <div style="height:10px"></div>
+
+          <label class="small" style="display:block; margin-bottom:6px">Which city are you traveling to in the next 3 months (if any)?</label>
+          <input id="nextCity" type="text" placeholder='e.g., London, Milan, Munich (optional)' />
+
+          <div style="height:10px"></div>
+
+          <label class="small" style="display:block; margin-bottom:6px">One thing GlobalFanID must have to be truly useful:</label>
+          <textarea id="mustHave" rows="4" placeholder="What would make you say: ‘I’d actually use this’?" required></textarea>
+
+          <div class="note">
+            We’ll share aggregated insights back with the community. No selling — just building with fans.
+          </div>
+        </form>
+      </div>
+
+      <div class="modal-actions">
+        <button class="btn-ghost" type="button" id="saveLaterBtn">Save for later</button>
+        <button class="btn" type="button" id="submitSurveyBtn">Submit mini-survey</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    /**
+     * ✅ WHAT YOU NEED TO EDIT:
+     * 1) Replace EMAIL_ENDPOINT with your endpoint to store emails
+     * 2) Replace SURVEY_ENDPOINT with your endpoint to store survey responses
+     *
+     * Quick options:
+     * - If you already use Google Forms, you can POST there via Apps Script web app.
+     * - If you use Netlify Forms: easiest is to use a regular <form netlify> (different setup).
+     * - If you use Airtable/Sheet: use a simple webhook (Make/Zapier/Pipedream).
+     */
+    const EMAIL_ENDPOINT = ""; // e.g. "https://YOUR-WEBHOOK-URL/early-access"
+    const SURVEY_ENDPOINT = ""; // e.g. "https://YOUR-WEBHOOK-URL/survey"
+
+    const emailForm = document.getElementById("emailForm");
+    const emailInput = document.getElementById("email");
+    const fanType = document.getElementById("fanType");
+    const joinBtn = document.getElementById("joinBtn");
+    const emailSuccess = document.getElementById("emailSuccess");
+    const surveyBtn = document.getElementById("surveyBtn");
+    const skipBtn = document.getElementById("skipBtn");
+
+    const modalBackdrop = document.getElementById("modalBackdrop");
+    const closeModalBtn = document.getElementById("closeModalBtn");
+    const saveLaterBtn = document.getElementById("saveLaterBtn");
+    const submitSurveyBtn = document.getElementById("submitSurveyBtn");
+
+    const surveyEmail = document.getElementById("surveyEmail");
+    const groupSize = document.getElementById("groupSize");
+    const travelFrequency = document.getElementById("travelFrequency");
+    const whatsappOneThing = document.getElementById("whatsappOneThing");
+    const nextCity = document.getElementById("nextCity");
+    const mustHave = document.getElementById("mustHave");
+
+    function openModal(){
+      modalBackdrop.style.display = "flex";
+      document.body.style.overflow = "hidden";
+    }
+    function closeModal(){
+      modalBackdrop.style.display = "none";
+      document.body.style.overflow = "";
+    }
+
+    function isValidEmail(v){
+      return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(String(v).trim());
+    }
+
+    async function postJSON(url, data){
+      if(!url) return { ok: true, skipped: true }; // allows running without endpoints while you test UI
+      const res = await fetch(url, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data)
+      });
+      return { ok: res.ok, status: res.status, text: await res.text().catch(()=> "") };
+    }
+
+    emailForm.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const email = emailInput.value.trim();
+      if(!isValidEmail(email)) { alert("Please enter a valid email."); return; }
+
+      joinBtn.disabled = true;
+      joinBtn.textContent = "Saving…";
+
+      try{
+        const payload = {
+          email,
+          fanType: fanType.value || null,
+          source: "madrid_q1_2026",
+          ts: new Date().toISOString()
+        };
+        const r = await postJSON(EMAIL_ENDPOINT, payload);
+        if(!r.ok) throw new Error("Failed to save");
+
+        emailSuccess.style.display = "block";
+        surveyBtn.disabled = false;
+        skipBtn.disabled = false;
+        surveyEmail.value = email;
+
+        joinBtn.textContent = "Saved ✓";
+      }catch(err){
+        joinBtn.disabled = false;
+        joinBtn.textContent = "Get early access";
+        alert("Sorry — something went wrong. Please try again.");
+      }
+    });
+
+    surveyBtn.addEventListener("click", () => {
+      if(!surveyEmail.value) return;
+      openModal();
+    });
+
+    skipBtn.addEventListener("click", () => {
+      // simple acknowledgment
+      skipBtn.textContent = "All good ✓";
+      setTimeout(()=>{ skipBtn.textContent = "Not now"; }, 1200);
+    });
+
+    closeModalBtn.addEventListener("click", closeModal);
+    saveLaterBtn.addEventListener("click", closeModal);
+    modalBackdrop.addEventListener("click", (e) => {
+      if(e.target === modalBackdrop) closeModal();
+    });
+
+    submitSurveyBtn.addEventListener("click", async () => {
+      if(!surveyEmail.value) { alert("Missing email."); return; }
+
+      // Basic validation
+      if(!groupSize.value || !travelFrequency.value || !whatsappOneThing.value || !mustHave.value.trim()){
+        alert("Please complete the required fields.");
+        return;
+      }
+
+      submitSurveyBtn.disabled = true;
+      submitSurveyBtn.textContent = "Submitting…";
+
+      try{
+        const payload = {
+          email: surveyEmail.value,
+          groupSize: groupSize.value,
+          travelFrequency: travelFrequency.value,
+          whatsappOneThing: whatsappOneThing.value,
+          nextCity: nextCity.value.trim() || null,
+          mustHave: mustHave.value.trim(),
+          source: "madrid_q1_2026",
+          ts: new Date().toISOString()
+        };
+        const r = await postJSON(SURVEY_ENDPOINT, payload);
+        if(!r.ok) throw new Error("Failed to submit survey");
+
+        submitSurveyBtn.textContent = "Submitted ✓";
+        setTimeout(() => {
+          closeModal();
+          // reset modal fields (keep email)
+          groupSize.value = "";
+          travelFrequency.value = "";
+          whatsappOneThing.value = "";
+          nextCity.value = "";
+          mustHave.value = "";
+          submitSurveyBtn.disabled = false;
+          submitSurveyBtn.textContent = "Submit mini-survey";
+        }, 700);
+      }catch(err){
+        submitSurveyBtn.disabled = false;
+        submitSurveyBtn.textContent = "Submit mini-survey";
+        alert("Sorry — could not submit. Please try again.");
+      }
+    });
+  </script>
+</body>
+</html>
