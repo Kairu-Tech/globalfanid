@@ -148,6 +148,10 @@
     .mactions{display:flex;gap:10px;justify-content:flex-end;padding:14px 16px;border-top:1px solid var(--border);background:rgba(0,0,0,.16);}
     .note{font-size:12px;color:rgba(159,176,208,.95);margin-top:10px}
 
+    #openSurveyAfter{
+  width:100%;
+}
+
     /* Footer clean */
     .footer-clean{
       margin-top:60px;
@@ -261,12 +265,11 @@
     ✅ You’re in. Want to help shape the next cities? Take the mini-survey (optional).
   </div>
 
-  <div class="minihelp">Optional — helps us pick the next cities.</div>
-
-  <div class="row" style="margin-top:10px">
-    <button id="surveyBtn" class="btn-ghost" type="button" disabled>Open mini-survey</button>
-    <button id="skipBtn" class="btn-ghost" type="button" disabled>Not now</button>
-  </div>
+<!-- Post-signup: show ONE optional action (after email is saved) -->
+<div id="postSignup" style="display:none; margin-top:12px;">
+  <div class="minihelp">Optional — 2-minute mini-survey to help pick the next cities.</div>
+  <button id="openSurveyAfter" class="btn-ghost" type="button">Open mini-survey (2 min)</button>
+</div>
 
   <div class="fine">No spam. Only updates + early access invites.</div>
 </form>
@@ -373,8 +376,8 @@
     const emailInput = document.getElementById("email");
     const joinBtn = document.getElementById("joinBtn");
     const emailSuccess = document.getElementById("emailSuccess");
-    const surveyBtn = document.getElementById("surveyBtn");
-    const skipBtn = document.getElementById("skipBtn");
+const postSignup = document.getElementById("postSignup");
+const openSurveyAfter = document.getElementById("openSurveyAfter");
     const emailTs = document.getElementById("emailTs");
 
     const backdrop = document.getElementById("backdrop");
@@ -401,26 +404,22 @@
       // optimistic UI
       joinBtn.disabled = true;
       joinBtn.textContent = "Saving…";
-      setTimeout(() => {
-        joinBtn.textContent = "Saved ✓";
-        emailSuccess.style.display = "block";
-        surveyBtn.disabled = false;
-        skipBtn.disabled = false;
-        surveyEmail.value = email;
-      }, 450);
+     setTimeout(() => {
+  joinBtn.textContent = "Saved ✓";
+  emailSuccess.style.display = "block";
+  surveyEmail.value = email;
+
+  // show the single optional action AFTER signup
+  postSignup.style.display = "block";
+}, 450);
 
       return true; // allow POST to iframe
     }
 
-    surveyBtn.addEventListener("click", () => {
-      if(!surveyEmail.value) return;
-      openModal();
-    });
-
-    skipBtn.addEventListener("click", () => {
-      skipBtn.textContent = "All good ✓";
-      setTimeout(()=>{ skipBtn.textContent = "Not now"; }, 1200);
-    });
+   openSurveyAfter.addEventListener("click", () => {
+  if(!surveyEmail.value) return;
+  openModal();
+});
 
     closeBtn.addEventListener("click", closeModal);
     laterBtn.addEventListener("click", closeModal);
