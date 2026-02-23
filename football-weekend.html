@@ -222,42 +222,35 @@
             10 seconds. Optional mini-survey after signup.
           </p>
 
-          <!-- EMAIL FORM (posts to Apps Script via iframe) -->
-          <form id="emailForm" method="POST" action="" target="email_iframe" onsubmit="return handleEmailSubmit();">
+              <!-- EMAIL FORM (posts to Apps Script via iframe) -->
+<form id="emailForm" method="POST" action="" target="email_iframe" onsubmit="return handleEmailSubmit();">
 
-            <!-- dropdown FIRST -->
-            <select id="fanType" name="fanType">
-              <option value="">What describes you best? (optional)</option>
-              <option value="supporters_club">Supporters’ club / Peña</option>
-              <option value="friends_group">Friends group</option>
-              <option value="groundhopper">Groundhopper</option>
-              <option value="solo_or_couple">Solo / couple</option>
-            </select>
 
-            <div class="minihelp">Optional — helps us pick the next cities.</div>
 
-            <div class="row" style="margin-top:6px">
-              <input id="email" name="email" type="email" placeholder="Your email" required autocomplete="email" />
-              <button id="joinBtn" class="btn" type="submit">Join free early access</button>
-            </div>
+  <!-- Email + button SECOND -->
+  <div class="row">
+    <input id="email" name="email" type="email" placeholder="Your email" required autocomplete="email" />
+    <button id="joinBtn" class="btn" type="submit">Join free early access</button>
+  </div>
 
-            <input type="hidden" name="type" value="email">
-            <input type="hidden" name="source" value="early-access">
-            <input type="hidden" name="ts" id="emailTs" value="">
+  <input type="hidden" name="type" value="email">
+  <input type="hidden" name="source" value="early-access">
+  <input type="hidden" name="ts" id="emailTs" value="">
 
-            <div id="emailSuccess" class="success">
-              ✅ You’re in. Want to help shape the next cities? Take the mini-survey (optional).
-            </div>
+  <div id="emailSuccess" class="success">
+    ✅ You’re in. Want to help shape the next cities? Take the mini-survey (optional).
+  </div>
 
-            <div class="row" style="margin-top:10px">
-              <button id="surveyBtn" class="btn-ghost" type="button" disabled>Open mini-survey</button>
-              <button id="skipBtn" class="btn-ghost" type="button" disabled>Not now</button>
-            </div>
+<!-- Post-signup: show ONE optional action (after email is saved) -->
+<div id="postSignup" style="display:none; margin-top:12px;">
+  <div class="minihelp">Optional — 2-minute mini-survey to help pick the next cities.</div>
+  <button id="openSurveyAfter" class="btn-ghost" type="button">Open mini-survey (2 min)</button>
+</div>
 
-            <div class="fine">No spam. Only updates + early access invites.</div>
-          </form>
+  <div class="fine">No spam. Only updates + early access invites.</div>
+</form>
 
-          <iframe name="email_iframe" style="display:none;"></iframe>
+<iframe name="email_iframe" style="display:none;"></iframe>
 
           <div class="divider"></div>
 
